@@ -1,0 +1,15 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /thank-you
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /thank-you
+
+Host: https://anveda.vercel.app
+Sitemap: https://anveda.vercel.app/sitemap.xml
