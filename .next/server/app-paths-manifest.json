@@ -1,3 +1,8 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/cart/page": "app/cart/page.js",
+  "/api/send-otp/route": "app/api/send-otp/route.js",
+  "/api/send-order-confirmation/route": "app/api/send-order-confirmation/route.js"
 }
