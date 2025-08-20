@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design system with HSL colors */
+@layer base {
+  :root {
+    --background: 38 44% 96%; /* Cream #F9F1E6 */
+    --foreground: 26 100% 25%; /* Primary #7d3600 */
+    --card: 0 0% 100%;
+    --card-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --primary: 26 100% 25%; /* Primary #7d3600 */
+    --primary-foreground: 38 44% 96%; /* Cream #F9F1E6 */
+    --secondary: 25 100% 36%; /* Secondary #b84d00 */
+    --secondary-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --muted: 40 13% 71%; /* Soft Sage #C8C2B2 */
+    --muted-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --accent: 25 100% 36%; /* Secondary #b84d00 */
+    --accent-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 40 13% 80%; /* Lighter Sage */
+    --input: 40 13% 80%; /* Lighter Sage */
+    --ring: 26 100% 25%; /* Primary #7d3600 */
+    --radius: 0.5rem;
+    --sidebar-background: 38 44% 96%; /* Cream #F9F1E6 */
+    --sidebar-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --sidebar-primary: 26 100% 25%; /* Primary #7d3600 */
+    --sidebar-primary-foreground: 38 44% 96%; /* Cream #F9F1E6 */
+    --sidebar-accent: 25 100% 36%; /* Secondary #b84d00 */
+    --sidebar-accent-foreground: 26 100% 25%; /* Primary #7d3600 */
+    --sidebar-border: 40 13% 71%; /* Soft Sage #C8C2B2 */
+    --sidebar-ring: 25 100% 36%; /* Secondary #b84d00 */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hover-lift {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .story-link {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .story-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #7d3600; /* Primary color */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+  
+  .story-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .slide-out-right {
+    animation: slideOutRight 0.3s ease-out;
+  }
+
+  /* Discount Badge Animations */
+  @keyframes badgePulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  .badge-pulse {
+    animation: badgePulse 2s ease-in-out infinite;
+  }
+
+  /* Shadow variations for different colors */
+  .shadow-red-200\/50 {
+    box-shadow: 0 4px 6px -1px rgba(254, 202, 202, 0.5), 0 2px 4px -1px rgba(254, 202, 202, 0.3);
+  }
+
+  .shadow-orange-200\/50 {
+    box-shadow: 0 4px 6px -1px rgba(254, 215, 170, 0.5), 0 2px 4px -1px rgba(254, 215, 170, 0.3);
+  }
+
+  .shadow-green-200\/50 {
+    box-shadow: 0 4px 6px -1px rgba(187, 247, 208, 0.5), 0 2px 4px -1px rgba(187, 247, 208, 0.3);
+  }
+
+  .shadow-purple-200\/50 {
+    box-shadow: 0 4px 6px -1px rgba(233, 213, 255, 0.5), 0 2px 4px -1px rgba(233, 213, 255, 0.3);
+  }
+
+  /* Custom Discount Badge Styling */
+  .c-card__label:before {
+    border-bottom: 1px solid #ffebbc;
+    border-left: 1px solid #ffebbc;
+    border-radius: 0 0 7px 7px;
+    border-right: 1px solid #ffebbc;
+    content: "";
+    height: calc(100% - 2px);
+    left: 2px;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 4px);
+  }
+
+  /* Shimmer effect for high intensity badges */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) skewX(-12deg);
+    }
+    100% {
+      transform: translateX(200%) skewX(-12deg);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  /* Loading bar animation */
+  @keyframes loading-bar {
+    0% {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+    50% {
+      transform: scaleX(0.7);
+      transform-origin: left;
+    }
+    100% {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  .animate-loading-bar {
+    animation: loading-bar 1.5s ease-in-out infinite;
+  }
+}
+@font-face {
+  font-family: 'Magmawave Caps';
+  src: url('/fonts/MagmawaveCaps.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
