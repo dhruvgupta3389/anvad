@@ -1,0 +1,298 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+(() => {
+var exports = {};
+exports.id = "app/api/send-otp/route";
+exports.ids = ["app/api/send-otp/route"];
+exports.modules = {
+
+/***/ "next/dist/compiled/next-server/app-page.runtime.dev.js":
+/*!*************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/app-page.runtime.dev.js" ***!
+  \*************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js");
+
+/***/ }),
+
+/***/ "next/dist/compiled/next-server/app-route.runtime.dev.js":
+/*!**************************************************************************!*\
+  !*** external "next/dist/compiled/next-server/app-route.runtime.dev.js" ***!
+  \**************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("next/dist/compiled/next-server/app-route.runtime.dev.js");
+
+/***/ }),
+
+/***/ "buffer":
+/*!*************************!*\
+  !*** external "buffer" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("buffer");
+
+/***/ }),
+
+/***/ "child_process":
+/*!********************************!*\
+  !*** external "child_process" ***!
+  \********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
+
+/***/ }),
+
+/***/ "dns":
+/*!**********************!*\
+  !*** external "dns" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("dns");
+
+/***/ }),
+
+/***/ "events":
+/*!*************************!*\
+  !*** external "events" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("events");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ "net":
+/*!**********************!*\
+  !*** external "net" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("net");
+
+/***/ }),
+
+/***/ "os":
+/*!*********************!*\
+  !*** external "os" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("os");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "punycode":
+/*!***************************!*\
+  !*** external "punycode" ***!
+  \***************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("punycode");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "tls":
+/*!**********************!*\
+  !*** external "tls" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tls");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "util":
+/*!***********************!*\
+  !*** external "util" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("util");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
+
+/***/ }),
+
+/***/ "?32c4":
+/*!****************************!*\
+  !*** bufferutil (ignored) ***!
+  \****************************/
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ "?66e9":
+/*!********************************!*\
+  !*** utf-8-validate (ignored) ***!
+  \********************************/
+/***/ (() => {
+
+/* (ignored) */
+
+/***/ }),
+
+/***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fsend-otp%2Froute&page=%2Fapi%2Fsend-otp%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fsend-otp%2Froute.ts&appDir=E%3A%5Canvad%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=E%3A%5Canvad&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fsend-otp%2Froute&page=%2Fapi%2Fsend-otp%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fsend-otp%2Froute.ts&appDir=E%3A%5Canvad%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=E%3A%5Canvad&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   originalPathname: () => (/* binding */ originalPathname),\n/* harmony export */   patchFetch: () => (/* binding */ patchFetch),\n/* harmony export */   requestAsyncStorage: () => (/* binding */ requestAsyncStorage),\n/* harmony export */   routeModule: () => (/* binding */ routeModule),\n/* harmony export */   serverHooks: () => (/* binding */ serverHooks),\n/* harmony export */   staticGenerationAsyncStorage: () => (/* binding */ staticGenerationAsyncStorage)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/future/route-modules/app-route/module.compiled */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-route/module.compiled.js\");\n/* harmony import */ var next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/future/route-kind */ \"(rsc)/./node_modules/next/dist/server/future/route-kind.js\");\n/* harmony import */ var next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/server/lib/patch-fetch */ \"(rsc)/./node_modules/next/dist/server/lib/patch-fetch.js\");\n/* harmony import */ var next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var E_anvad_app_api_send_otp_route_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/api/send-otp/route.ts */ \"(rsc)/./app/api/send-otp/route.ts\");\n\n\n\n\n// We inject the nextConfigOutput here so that we can use them in the route\n// module.\nconst nextConfigOutput = \"\"\nconst routeModule = new next_dist_server_future_route_modules_app_route_module_compiled__WEBPACK_IMPORTED_MODULE_0__.AppRouteRouteModule({\n    definition: {\n        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.APP_ROUTE,\n        page: \"/api/send-otp/route\",\n        pathname: \"/api/send-otp\",\n        filename: \"route\",\n        bundlePath: \"app/api/send-otp/route\"\n    },\n    resolvedPagePath: \"E:\\\\anvad\\\\app\\\\api\\\\send-otp\\\\route.ts\",\n    nextConfigOutput,\n    userland: E_anvad_app_api_send_otp_route_ts__WEBPACK_IMPORTED_MODULE_3__\n});\n// Pull out the exports that we need to expose from the module. This should\n// be eliminated when we've moved the other routes to the new format. These\n// are used to hook into the route.\nconst { requestAsyncStorage, staticGenerationAsyncStorage, serverHooks } = routeModule;\nconst originalPathname = \"/api/send-otp/route\";\nfunction patchFetch() {\n    return (0,next_dist_server_lib_patch_fetch__WEBPACK_IMPORTED_MODULE_2__.patchFetch)({\n        serverHooks,\n        staticGenerationAsyncStorage\n    });\n}\n\n\n//# sourceMappingURL=app-route.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWFwcC1sb2FkZXIuanM/bmFtZT1hcHAlMkZhcGklMkZzZW5kLW90cCUyRnJvdXRlJnBhZ2U9JTJGYXBpJTJGc2VuZC1vdHAlMkZyb3V0ZSZhcHBQYXRocz0mcGFnZVBhdGg9cHJpdmF0ZS1uZXh0LWFwcC1kaXIlMkZhcGklMkZzZW5kLW90cCUyRnJvdXRlLnRzJmFwcERpcj1FJTNBJTVDYW52YWQlNUNhcHAmcGFnZUV4dGVuc2lvbnM9dHN4JnBhZ2VFeHRlbnNpb25zPXRzJnBhZ2VFeHRlbnNpb25zPWpzeCZwYWdlRXh0ZW5zaW9ucz1qcyZyb290RGlyPUUlM0ElNUNhbnZhZCZpc0Rldj10cnVlJnRzY29uZmlnUGF0aD10c2NvbmZpZy5qc29uJmJhc2VQYXRoPSZhc3NldFByZWZpeD0mbmV4dENvbmZpZ091dHB1dD0mcHJlZmVycmVkUmVnaW9uPSZtaWRkbGV3YXJlQ29uZmlnPWUzMCUzRCEiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7O0FBQXNHO0FBQ3ZDO0FBQ2M7QUFDVDtBQUNwRTtBQUNBO0FBQ0E7QUFDQSx3QkFBd0IsZ0hBQW1CO0FBQzNDO0FBQ0EsY0FBYyx5RUFBUztBQUN2QjtBQUNBO0FBQ0E7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUNBO0FBQ0EsWUFBWTtBQUNaLENBQUM7QUFDRDtBQUNBO0FBQ0E7QUFDQSxRQUFRLGlFQUFpRTtBQUN6RTtBQUNBO0FBQ0EsV0FBVyw0RUFBVztBQUN0QjtBQUNBO0FBQ0EsS0FBSztBQUNMO0FBQ3VIOztBQUV2SCIsInNvdXJjZXMiOlsid2VicGFjazovL25leHRqc19yZWFjdF9zaGFkY25fdHMvP2VhZDgiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQXBwUm91dGVSb3V0ZU1vZHVsZSB9IGZyb20gXCJuZXh0L2Rpc3Qvc2VydmVyL2Z1dHVyZS9yb3V0ZS1tb2R1bGVzL2FwcC1yb3V0ZS9tb2R1bGUuY29tcGlsZWRcIjtcbmltcG9ydCB7IFJvdXRlS2luZCB9IGZyb20gXCJuZXh0L2Rpc3Qvc2VydmVyL2Z1dHVyZS9yb3V0ZS1raW5kXCI7XG5pbXBvcnQgeyBwYXRjaEZldGNoIGFzIF9wYXRjaEZldGNoIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvbGliL3BhdGNoLWZldGNoXCI7XG5pbXBvcnQgKiBhcyB1c2VybGFuZCBmcm9tIFwiRTpcXFxcYW52YWRcXFxcYXBwXFxcXGFwaVxcXFxzZW5kLW90cFxcXFxyb3V0ZS50c1wiO1xuLy8gV2UgaW5qZWN0IHRoZSBuZXh0Q29uZmlnT3V0cHV0IGhlcmUgc28gdGhhdCB3ZSBjYW4gdXNlIHRoZW0gaW4gdGhlIHJvdXRlXG4vLyBtb2R1bGUuXG5jb25zdCBuZXh0Q29uZmlnT3V0cHV0ID0gXCJcIlxuY29uc3Qgcm91dGVNb2R1bGUgPSBuZXcgQXBwUm91dGVSb3V0ZU1vZHVsZSh7XG4gICAgZGVmaW5pdGlvbjoge1xuICAgICAgICBraW5kOiBSb3V0ZUtpbmQuQVBQX1JPVVRFLFxuICAgICAgICBwYWdlOiBcIi9hcGkvc2VuZC1vdHAvcm91dGVcIixcbiAgICAgICAgcGF0aG5hbWU6IFwiL2FwaS9zZW5kLW90cFwiLFxuICAgICAgICBmaWxlbmFtZTogXCJyb3V0ZVwiLFxuICAgICAgICBidW5kbGVQYXRoOiBcImFwcC9hcGkvc2VuZC1vdHAvcm91dGVcIlxuICAgIH0sXG4gICAgcmVzb2x2ZWRQYWdlUGF0aDogXCJFOlxcXFxhbnZhZFxcXFxhcHBcXFxcYXBpXFxcXHNlbmQtb3RwXFxcXHJvdXRlLnRzXCIsXG4gICAgbmV4dENvbmZpZ091dHB1dCxcbiAgICB1c2VybGFuZFxufSk7XG4vLyBQdWxsIG91dCB0aGUgZXhwb3J0cyB0aGF0IHdlIG5lZWQgdG8gZXhwb3NlIGZyb20gdGhlIG1vZHVsZS4gVGhpcyBzaG91bGRcbi8vIGJlIGVsaW1pbmF0ZWQgd2hlbiB3ZSd2ZSBtb3ZlZCB0aGUgb3RoZXIgcm91dGVzIHRvIHRoZSBuZXcgZm9ybWF0LiBUaGVzZVxuLy8gYXJlIHVzZWQgdG8gaG9vayBpbnRvIHRoZSByb3V0ZS5cbmNvbnN0IHsgcmVxdWVzdEFzeW5jU3RvcmFnZSwgc3RhdGljR2VuZXJhdGlvbkFzeW5jU3RvcmFnZSwgc2VydmVySG9va3MgfSA9IHJvdXRlTW9kdWxlO1xuY29uc3Qgb3JpZ2luYWxQYXRobmFtZSA9IFwiL2FwaS9zZW5kLW90cC9yb3V0ZVwiO1xuZnVuY3Rpb24gcGF0Y2hGZXRjaCgpIHtcbiAgICByZXR1cm4gX3BhdGNoRmV0Y2goe1xuICAgICAgICBzZXJ2ZXJIb29rcyxcbiAgICAgICAgc3RhdGljR2VuZXJhdGlvbkFzeW5jU3RvcmFnZVxuICAgIH0pO1xufVxuZXhwb3J0IHsgcm91dGVNb2R1bGUsIHJlcXVlc3RBc3luY1N0b3JhZ2UsIHN0YXRpY0dlbmVyYXRpb25Bc3luY1N0b3JhZ2UsIHNlcnZlckhvb2tzLCBvcmlnaW5hbFBhdGhuYW1lLCBwYXRjaEZldGNoLCAgfTtcblxuLy8jIHNvdXJjZU1hcHBpbmdVUkw9YXBwLXJvdXRlLmpzLm1hcCJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fsend-otp%2Froute&page=%2Fapi%2Fsend-otp%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fsend-otp%2Froute.ts&appDir=E%3A%5Canvad%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=E%3A%5Canvad&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!\n");
+
+/***/ }),
+
+/***/ "(rsc)/./app/api/send-otp/route.ts":
+/*!***********************************!*\
+  !*** ./app/api/send-otp/route.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   POST: () => (/* binding */ POST)\n/* harmony export */ });\n/* harmony import */ var next_server__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/server */ \"(rsc)/./node_modules/next/dist/api/server.js\");\n/* harmony import */ var _lib_emailService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/lib/emailService */ \"(rsc)/./lib/emailService.ts\");\n/* harmony import */ var _lib_supabaseClient__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/lib/supabaseClient */ \"(rsc)/./lib/supabaseClient.ts\");\n\n\n\nasync function POST(request) {\n    try {\n        const { email } = await request.json();\n        if (!email || !email.includes(\"@\")) {\n            return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.json({\n                error: \"Valid email is required\"\n            }, {\n                status: 400\n            });\n        }\n        // Generate 6-digit OTP\n        const otp = Math.floor(100000 + Math.random() * 900000).toString();\n        // Delete any existing OTPs for this email\n        await _lib_supabaseClient__WEBPACK_IMPORTED_MODULE_2__.supabase.from(\"otps\").delete().eq(\"email\", email);\n        // Store OTP in database\n        const { error: dbError } = await _lib_supabaseClient__WEBPACK_IMPORTED_MODULE_2__.supabase.from(\"otps\").insert({\n            email,\n            code: otp\n        });\n        if (dbError) {\n            console.error(\"Database error:\", dbError);\n            return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.json({\n                error: \"Failed to store OTP\"\n            }, {\n                status: 500\n            });\n        }\n        // Send OTP via email\n        const emailResult = await (0,_lib_emailService__WEBPACK_IMPORTED_MODULE_1__.sendOTPEmail)(email, otp);\n        if (!emailResult.success) {\n            console.error(\"Email error:\", emailResult.error);\n            return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.json({\n                error: \"Failed to send OTP email\"\n            }, {\n                status: 500\n            });\n        }\n        return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.json({\n            success: true,\n            message: \"OTP sent successfully\"\n        }, {\n            status: 200\n        });\n    } catch (error) {\n        console.error(\"API error:\", error);\n        return next_server__WEBPACK_IMPORTED_MODULE_0__.NextResponse.json({\n            error: \"Internal server error\"\n        }, {\n            status: 500\n        });\n    }\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9hcHAvYXBpL3NlbmQtb3RwL3JvdXRlLnRzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFBd0Q7QUFDTjtBQUNGO0FBRXpDLGVBQWVHLEtBQUtDLE9BQW9CO0lBQzdDLElBQUk7UUFDRixNQUFNLEVBQUVDLEtBQUssRUFBRSxHQUFHLE1BQU1ELFFBQVFFLElBQUk7UUFFcEMsSUFBSSxDQUFDRCxTQUFTLENBQUNBLE1BQU1FLFFBQVEsQ0FBQyxNQUFNO1lBQ2xDLE9BQU9QLHFEQUFZQSxDQUFDTSxJQUFJLENBQ3RCO2dCQUFFRSxPQUFPO1lBQTBCLEdBQ25DO2dCQUFFQyxRQUFRO1lBQUk7UUFFbEI7UUFFQSx1QkFBdUI7UUFDdkIsTUFBTUMsTUFBTUMsS0FBS0MsS0FBSyxDQUFDLFNBQVNELEtBQUtFLE1BQU0sS0FBSyxRQUFRQyxRQUFRO1FBRWhFLDBDQUEwQztRQUMxQyxNQUFNWix5REFBUUEsQ0FBQ2EsSUFBSSxDQUFDLFFBQVFDLE1BQU0sR0FBR0MsRUFBRSxDQUFDLFNBQVNaO1FBRWpELHdCQUF3QjtRQUN4QixNQUFNLEVBQUVHLE9BQU9VLE9BQU8sRUFBRSxHQUFHLE1BQU1oQix5REFBUUEsQ0FDdENhLElBQUksQ0FBQyxRQUNMSSxNQUFNLENBQUM7WUFBRWQ7WUFBT2UsTUFBTVY7UUFBSTtRQUU3QixJQUFJUSxTQUFTO1lBQ1hHLFFBQVFiLEtBQUssQ0FBQyxtQkFBbUJVO1lBQ2pDLE9BQU9sQixxREFBWUEsQ0FBQ00sSUFBSSxDQUN0QjtnQkFBRUUsT0FBTztZQUFzQixHQUMvQjtnQkFBRUMsUUFBUTtZQUFJO1FBRWxCO1FBRUEscUJBQXFCO1FBQ3JCLE1BQU1hLGNBQWMsTUFBTXJCLCtEQUFZQSxDQUFDSSxPQUFPSztRQUU5QyxJQUFJLENBQUNZLFlBQVlDLE9BQU8sRUFBRTtZQUN4QkYsUUFBUWIsS0FBSyxDQUFDLGdCQUFnQmMsWUFBWWQsS0FBSztZQUMvQyxPQUFPUixxREFBWUEsQ0FBQ00sSUFBSSxDQUN0QjtnQkFBRUUsT0FBTztZQUEyQixHQUNwQztnQkFBRUMsUUFBUTtZQUFJO1FBRWxCO1FBRUEsT0FBT1QscURBQVlBLENBQUNNLElBQUksQ0FDdEI7WUFBRWlCLFNBQVM7WUFBTUMsU0FBUztRQUF3QixHQUNsRDtZQUFFZixRQUFRO1FBQUk7SUFHbEIsRUFBRSxPQUFPRCxPQUFPO1FBQ2RhLFFBQVFiLEtBQUssQ0FBQyxjQUFjQTtRQUM1QixPQUFPUixxREFBWUEsQ0FBQ00sSUFBSSxDQUN0QjtZQUFFRSxPQUFPO1FBQXdCLEdBQ2pDO1lBQUVDLFFBQVE7UUFBSTtJQUVsQjtBQUNGIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbmV4dGpzX3JlYWN0X3NoYWRjbl90cy8uL2FwcC9hcGkvc2VuZC1vdHAvcm91dGUudHM/ZTZhMyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBOZXh0UmVxdWVzdCwgTmV4dFJlc3BvbnNlIH0gZnJvbSAnbmV4dC9zZXJ2ZXInO1xyXG5pbXBvcnQgeyBzZW5kT1RQRW1haWwgfSBmcm9tICdAL2xpYi9lbWFpbFNlcnZpY2UnO1xyXG5pbXBvcnQgeyBzdXBhYmFzZSB9IGZyb20gJ0AvbGliL3N1cGFiYXNlQ2xpZW50JztcclxuXHJcbmV4cG9ydCBhc3luYyBmdW5jdGlvbiBQT1NUKHJlcXVlc3Q6IE5leHRSZXF1ZXN0KSB7XHJcbiAgdHJ5IHtcclxuICAgIGNvbnN0IHsgZW1haWwgfSA9IGF3YWl0IHJlcXVlc3QuanNvbigpO1xyXG5cclxuICAgIGlmICghZW1haWwgfHwgIWVtYWlsLmluY2x1ZGVzKCdAJykpIHtcclxuICAgICAgcmV0dXJuIE5leHRSZXNwb25zZS5qc29uKFxyXG4gICAgICAgIHsgZXJyb3I6ICdWYWxpZCBlbWFpbCBpcyByZXF1aXJlZCcgfSxcclxuICAgICAgICB7IHN0YXR1czogNDAwIH1cclxuICAgICAgKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBHZW5lcmF0ZSA2LWRpZ2l0IE9UUFxyXG4gICAgY29uc3Qgb3RwID0gTWF0aC5mbG9vcigxMDAwMDAgKyBNYXRoLnJhbmRvbSgpICogOTAwMDAwKS50b1N0cmluZygpO1xyXG5cclxuICAgIC8vIERlbGV0ZSBhbnkgZXhpc3RpbmcgT1RQcyBmb3IgdGhpcyBlbWFpbFxyXG4gICAgYXdhaXQgc3VwYWJhc2UuZnJvbSgnb3RwcycpLmRlbGV0ZSgpLmVxKCdlbWFpbCcsIGVtYWlsKTtcclxuXHJcbiAgICAvLyBTdG9yZSBPVFAgaW4gZGF0YWJhc2VcclxuICAgIGNvbnN0IHsgZXJyb3I6IGRiRXJyb3IgfSA9IGF3YWl0IHN1cGFiYXNlXHJcbiAgICAgIC5mcm9tKCdvdHBzJylcclxuICAgICAgLmluc2VydCh7IGVtYWlsLCBjb2RlOiBvdHAgfSk7XHJcblxyXG4gICAgaWYgKGRiRXJyb3IpIHtcclxuICAgICAgY29uc29sZS5lcnJvcignRGF0YWJhc2UgZXJyb3I6JywgZGJFcnJvcik7XHJcbiAgICAgIHJldHVybiBOZXh0UmVzcG9uc2UuanNvbihcclxuICAgICAgICB7IGVycm9yOiAnRmFpbGVkIHRvIHN0b3JlIE9UUCcgfSxcclxuICAgICAgICB7IHN0YXR1czogNTAwIH1cclxuICAgICAgKTtcclxuICAgIH1cclxuXHJcbiAgICAvLyBTZW5kIE9UUCB2aWEgZW1haWxcclxuICAgIGNvbnN0IGVtYWlsUmVzdWx0ID0gYXdhaXQgc2VuZE9UUEVtYWlsKGVtYWlsLCBvdHApO1xyXG5cclxuICAgIGlmICghZW1haWxSZXN1bHQuc3VjY2Vzcykge1xyXG4gICAgICBjb25zb2xlLmVycm9yKCdFbWFpbCBlcnJvcjonLCBlbWFpbFJlc3VsdC5lcnJvcik7XHJcbiAgICAgIHJldHVybiBOZXh0UmVzcG9uc2UuanNvbihcclxuICAgICAgICB7IGVycm9yOiAnRmFpbGVkIHRvIHNlbmQgT1RQIGVtYWlsJyB9LFxyXG4gICAgICAgIHsgc3RhdHVzOiA1MDAgfVxyXG4gICAgICApO1xyXG4gICAgfVxyXG5cclxuICAgIHJldHVybiBOZXh0UmVzcG9uc2UuanNvbihcclxuICAgICAgeyBzdWNjZXNzOiB0cnVlLCBtZXNzYWdlOiAnT1RQIHNlbnQgc3VjY2Vzc2Z1bGx5JyB9LFxyXG4gICAgICB7IHN0YXR1czogMjAwIH1cclxuICAgICk7XHJcblxyXG4gIH0gY2F0Y2ggKGVycm9yKSB7XHJcbiAgICBjb25zb2xlLmVycm9yKCdBUEkgZXJyb3I6JywgZXJyb3IpO1xyXG4gICAgcmV0dXJuIE5leHRSZXNwb25zZS5qc29uKFxyXG4gICAgICB7IGVycm9yOiAnSW50ZXJuYWwgc2VydmVyIGVycm9yJyB9LFxyXG4gICAgICB7IHN0YXR1czogNTAwIH1cclxuICAgICk7XHJcbiAgfVxyXG59XHJcbiJdLCJuYW1lcyI6WyJOZXh0UmVzcG9uc2UiLCJzZW5kT1RQRW1haWwiLCJzdXBhYmFzZSIsIlBPU1QiLCJyZXF1ZXN0IiwiZW1haWwiLCJqc29uIiwiaW5jbHVkZXMiLCJlcnJvciIsInN0YXR1cyIsIm90cCIsIk1hdGgiLCJmbG9vciIsInJhbmRvbSIsInRvU3RyaW5nIiwiZnJvbSIsImRlbGV0ZSIsImVxIiwiZGJFcnJvciIsImluc2VydCIsImNvZGUiLCJjb25zb2xlIiwiZW1haWxSZXN1bHQiLCJzdWNjZXNzIiwibWVzc2FnZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./app/api/send-otp/route.ts\n");
+
+/***/ }),
+
+/***/ "(rsc)/./lib/emailService.ts":
+/*!*****************************!*\
+  !*** ./lib/emailService.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   sendNewsletterWelcomeEmail: () => (/* binding */ sendNewsletterWelcomeEmail),\n/* harmony export */   sendOTPEmail: () => (/* binding */ sendOTPEmail),\n/* harmony export */   sendOrderConfirmationEmail: () => (/* binding */ sendOrderConfirmationEmail)\n/* harmony export */ });\n/* harmony import */ var nodemailer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! nodemailer */ \"(rsc)/./node_modules/nodemailer/lib/nodemailer.js\");\n\n// Configure Gmail transporter\nconst createTransporter = ()=>{\n    return nodemailer__WEBPACK_IMPORTED_MODULE_0__.createTransport({\n        service: \"gmail\",\n        auth: {\n            user: process.env.GMAIL_EMAIL,\n            pass: process.env.GMAIL_APP_PASSWORD\n        }\n    });\n};\n// Send OTP email\nconst sendOTPEmail = async (email, otp)=>{\n    const transporter = createTransporter();\n    const mailOptions = {\n        from: process.env.GMAIL_EMAIL,\n        to: email,\n        subject: \"ANVEDA - Email Verification OTP\",\n        html: `\r\n      <div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f5ef;\">\r\n        <div style=\"background-color: white; padding: 30px; border-radius: 10px; text-align: center;\">\r\n          <h1 style=\"color: #7d3600; margin-bottom: 20px;\">\r\n            <span style=\"color: #EDBC7E;\">ANVEDA</span>\r\n          </h1>\r\n          <h2 style=\"color: #333; margin-bottom: 20px;\">Email Verification</h2>\r\n          <p style=\"color: #666; margin-bottom: 30px;\">\r\n            Please use the following OTP to verify your email address:\r\n          </p>\r\n          <div style=\"background-color: #7d3600; color: white; padding: 15px; border-radius: 5px; font-size: 24px; font-weight: bold; letter-spacing: 3px; margin: 20px 0;\">\r\n            ${otp}\r\n          </div>\r\n          <p style=\"color: #666; font-size: 14px; margin-top: 20px;\">\r\n            This OTP is valid for 10 minutes only.\r\n          </p>\r\n          <p style=\"color: #999; font-size: 12px; margin-top: 30px;\">\r\n            If you didn't request this verification, please ignore this email.\r\n          </p>\r\n        </div>\r\n      </div>\r\n    `\n    };\n    try {\n        await transporter.sendMail(mailOptions);\n        return {\n            success: true\n        };\n    } catch (error) {\n        console.error(\"Error sending OTP email:\", error);\n        return {\n            success: false,\n            error: error\n        };\n    }\n};\n// Send order confirmation email\nconst sendOrderConfirmationEmail = async (orderDetails)=>{\n    const transporter = createTransporter();\n    const { email, name, orderId, items, totalPrice, address, phone } = orderDetails;\n    const itemsHtml = items.map((item)=>`\r\n    <tr style=\"border-bottom: 1px solid #eee;\">\r\n      <td style=\"padding: 10px; text-align: left;\">${item.product_name}</td>\r\n      <td style=\"padding: 10px; text-align: center;\">${item.variant_quantity}</td>\r\n      <td style=\"padding: 10px; text-align: center;\">${item.quantity}</td>\r\n      <td style=\"padding: 10px; text-align: right;\">₹${item.unit_price}</td>\r\n      <td style=\"padding: 10px; text-align: right; font-weight: bold;\">₹${item.total_price}</td>\r\n    </tr>\r\n  `).join(\"\");\n    const mailOptions = {\n        from: process.env.GMAIL_EMAIL,\n        to: email,\n        subject: `Order Confirmation - #${orderId} - ANVEDA`,\n        html: `\r\n      <div style=\"font-family: Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 20px; background-color: #f9f5ef;\">\r\n        <div style=\"background-color: white; padding: 30px; border-radius: 10px;\">\r\n          <div style=\"text-align: center; margin-bottom: 30px;\">\r\n            <h1 style=\"color: #7d3600; margin-bottom: 10px;\">\r\n              <span style=\"color: #EDBC7E;\">ANVEDA</span>\r\n            </h1>\r\n            <div style=\"background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; display: inline-block;\">\r\n              ✅ Order Confirmed\r\n            </div>\r\n          </div>\r\n          \r\n          <h2 style=\"color: #333; margin-bottom: 20px;\">Thank you for your order, ${name}!</h2>\r\n          \r\n          <div style=\"background-color: #f8f9fa; padding: 20px; border-radius: 5px; margin-bottom: 20px;\">\r\n            <h3 style=\"color: #7d3600; margin-top: 0;\">Order Details</h3>\r\n            <p><strong>Order ID:</strong> #${orderId}</p>\r\n            <p><strong>Email:</strong> ${email}</p>\r\n            <p><strong>Phone:</strong> ${phone}</p>\r\n            <p><strong>Delivery Address:</strong><br>${address}</p>\r\n          </div>\r\n\r\n          <h3 style=\"color: #7d3600; margin-bottom: 15px;\">Items Ordered</h3>\r\n          <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 20px;\">\r\n            <thead>\r\n              <tr style=\"background-color: #7d3600; color: white;\">\r\n                <th style=\"padding: 12px; text-align: left;\">Product</th>\r\n                <th style=\"padding: 12px; text-align: center;\">Size</th>\r\n                <th style=\"padding: 12px; text-align: center;\">Qty</th>\r\n                <th style=\"padding: 12px; text-align: right;\">Price</th>\r\n                <th style=\"padding: 12px; text-align: right;\">Total</th>\r\n              </tr>\r\n            </thead>\r\n            <tbody>\r\n              ${itemsHtml}\r\n            </tbody>\r\n          </table>\r\n\r\n          <div style=\"text-align: right; margin-bottom: 30px;\">\r\n            <div style=\"background-color: #7d3600; color: white; padding: 15px; border-radius: 5px; display: inline-block;\">\r\n              <h3 style=\"margin: 0;\">Total Amount: ₹${totalPrice}</h3>\r\n            </div>\r\n          </div>\r\n\r\n          <div style=\"background-color: #e8f5e8; padding: 20px; border-radius: 5px; margin-bottom: 20px;\">\r\n            <h4 style=\"color: #2e7d32; margin-top: 0;\">What's Next?</h4>\r\n            <ul style=\"color: #666; margin: 0; padding-left: 20px;\">\r\n              <li>We'll process your order within 24 hours</li>\r\n              <li>You'll receive a shipping confirmation with tracking details</li>\r\n              <li>Expected delivery: 3-5 business days</li>\r\n              <li>Free delivery on all orders</li>\r\n            </ul>\r\n          </div>\r\n\r\n          <div style=\"text-align: center; margin-top: 30px;\">\r\n            <p style=\"color: #666;\">Need help? Contact us:</p>\r\n            <p style=\"color: #7d3600; font-weight: bold;\">\r\n              📱 +91 75200 81717 | 📧 rakshittgupta@gmail.com\r\n            </p>\r\n          </div>\r\n\r\n          <div style=\"text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;\">\r\n            <p style=\"color: #999; font-size: 12px;\">\r\n              Thank you for choosing ANVEDA - Premium A2 Ghee<br>\r\n              Traditional Methods • Modern Quality\r\n            </p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    `\n    };\n    try {\n        await transporter.sendMail(mailOptions);\n        return {\n            success: true\n        };\n    } catch (error) {\n        console.error(\"Error sending order confirmation email:\", error);\n        return {\n            success: false,\n            error: error\n        };\n    }\n};\n// Send newsletter subscription email\nconst sendNewsletterWelcomeEmail = async (email)=>{\n    const transporter = createTransporter();\n    const mailOptions = {\n        from: process.env.GMAIL_EMAIL,\n        to: email,\n        subject: \"Welcome to ANVEDA Newsletter!\",\n        html: `\r\n      <div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f5ef;\">\r\n        <div style=\"background-color: white; padding: 30px; border-radius: 10px;\">\r\n          <div style=\"text-align: center; margin-bottom: 30px;\">\r\n            <h1 style=\"color: #7d3600; margin-bottom: 10px;\">\r\n              <span style=\"color: #EDBC7E;\">ANVEDA</span>\r\n            </h1>\r\n            <div style=\"background-color: #4CAF50; color: white; padding: 10px; border-radius: 5px; display: inline-block;\">\r\n              🎉 Welcome to the Family!\r\n            </div>\r\n          </div>\r\n          \r\n          <h2 style=\"color: #333; margin-bottom: 20px;\">Thank you for subscribing!</h2>\r\n          \r\n          <p style=\"color: #666; line-height: 1.6; margin-bottom: 20px;\">\r\n            You're now part of the ANVEDA family! We're excited to share with you:\r\n          </p>\r\n\r\n          <ul style=\"color: #666; line-height: 1.8; margin-bottom: 30px;\">\r\n            <li>🌟 Exclusive offers and discounts</li>\r\n            <li>🥛 Health tips and A2 ghee benefits</li>\r\n            <li>📰 Latest product launches</li>\r\n            <li>👨‍🍳 Traditional recipes and cooking tips</li>\r\n            <li>🎁 Special subscriber-only deals</li>\r\n          </ul>\r\n\r\n          <div style=\"background-color: #fff8e1; padding: 20px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #EDBC7E;\">\r\n            <h3 style=\"color: #7d3600; margin-top: 0;\">Did you know?</h3>\r\n            <p style=\"color: #666; margin: 0;\">\r\n              A2 ghee contains only A2 beta-casein protein, which is easier to digest and may have additional health benefits compared to regular ghee. Our traditional churning methods preserve all the natural goodness!\r\n            </p>\r\n          </div>\r\n\r\n          <div style=\"text-align: center; margin: 30px 0;\">\r\n            <a href=\"${\"http://localhost:3000\" || 0}\" \r\n               style=\"background-color: #7d3600; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;\">\r\n              Shop Premium A2 Ghee\r\n            </a>\r\n          </div>\r\n\r\n          <div style=\"text-align: center; margin-top: 30px;\">\r\n            <p style=\"color: #666;\">Stay connected with us:</p>\r\n            <p style=\"color: #7d3600; font-weight: bold;\">\r\n              📱 +91 75200 81717 | 📧 rakshittgupta@gmail.com\r\n            </p>\r\n          </div>\r\n\r\n          <div style=\"text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;\">\r\n            <p style=\"color: #999; font-size: 12px;\">\r\n              You can unsubscribe at any time by replying to this email.<br>\r\n              ANVEDA - Premium A2 Ghee • Traditional Methods • Modern Quality\r\n            </p>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    `\n    };\n    try {\n        await transporter.sendMail(mailOptions);\n        return {\n            success: true\n        };\n    } catch (error) {\n        console.error(\"Error sending newsletter welcome email:\", error);\n        return {\n            success: false,\n            error: error\n        };\n    }\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,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UUFBSztJQUN6QixFQUFFLE9BQU9DLE9BQU87UUFDZEMsUUFBUUQsS0FBSyxDQUFDLDJDQUEyQ0E7UUFDekQsT0FBTztZQUFFRCxTQUFTO1lBQU9DLE9BQU9BO1FBQU07SUFDeEM7QUFDRixFQUFFIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbmV4dGpzX3JlYWN0X3NoYWRjbl90cy8uL2xpYi9lbWFpbFNlcnZpY2UudHM/MzJjZSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgbm9kZW1haWxlciBmcm9tICdub2RlbWFpbGVyJztcclxuXHJcbi8vIENvbmZpZ3VyZSBHbWFpbCB0cmFuc3BvcnRlclxyXG5jb25zdCBjcmVhdGVUcmFuc3BvcnRlciA9ICgpID0+IHtcclxuICByZXR1cm4gbm9kZW1haWxlci5jcmVhdGVUcmFuc3BvcnQoe1xyXG4gICAgc2VydmljZTogJ2dtYWlsJyxcclxuICAgIGF1dGg6IHtcclxuICAgICAgdXNlcjogcHJvY2Vzcy5lbnYuR01BSUxfRU1BSUwsXHJcbiAgICAgIHBhc3M6IHByb2Nlc3MuZW52LkdNQUlMX0FQUF9QQVNTV09SRCwgLy8gVXNlIEFwcCBQYXNzd29yZCwgbm90IHJlZ3VsYXIgcGFzc3dvcmRcclxuICAgIH0sXHJcbiAgfSk7XHJcbn07XHJcblxyXG4vLyBTZW5kIE9UUCBlbWFpbFxyXG5leHBvcnQgY29uc3Qgc2VuZE9UUEVtYWlsID0gYXN5bmMgKGVtYWlsOiBzdHJpbmcsIG90cDogc3RyaW5nKSA9PiB7XHJcbiAgY29uc3QgdHJhbnNwb3J0ZXIgPSBjcmVhdGVUcmFuc3BvcnRlcigpO1xyXG4gIFxyXG4gIGNvbnN0IG1haWxPcHRpb25zID0ge1xyXG4gICAgZnJvbTogcHJvY2Vzcy5lbnYuR01BSUxfRU1BSUwsXHJcbiAgICB0bzogZW1haWwsXHJcbiAgICBzdWJqZWN0OiAnQU5WRURBIC0gRW1haWwgVmVyaWZpY2F0aW9uIE9UUCcsXHJcbiAgICBodG1sOiBgXHJcbiAgICAgIDxkaXYgc3R5bGU9XCJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7IG1heC13aWR0aDogNjAwcHg7IG1hcmdpbjogMCBhdXRvOyBwYWRkaW5nOiAyMHB4OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZjlmNWVmO1wiPlxyXG4gICAgICAgIDxkaXYgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgcGFkZGluZzogMzBweDsgYm9yZGVyLXJhZGl1czogMTBweDsgdGV4dC1hbGlnbjogY2VudGVyO1wiPlxyXG4gICAgICAgICAgPGgxIHN0eWxlPVwiY29sb3I6ICM3ZDM2MDA7IG1hcmdpbi1ib3R0b206IDIwcHg7XCI+XHJcbiAgICAgICAgICAgIDxzcGFuIHN0eWxlPVwiY29sb3I6ICNFREJDN0U7XCI+QU5WRURBPC9zcGFuPlxyXG4gICAgICAgICAgPC9oMT5cclxuICAgICAgICAgIDxoMiBzdHlsZT1cImNvbG9yOiAjMzMzOyBtYXJnaW4tYm90dG9tOiAyMHB4O1wiPkVtYWlsIFZlcmlmaWNhdGlvbjwvaDI+XHJcbiAgICAgICAgICA8cCBzdHlsZT1cImNvbG9yOiAjNjY2OyBtYXJnaW4tYm90dG9tOiAzMHB4O1wiPlxyXG4gICAgICAgICAgICBQbGVhc2UgdXNlIHRoZSBmb2xsb3dpbmcgT1RQIHRvIHZlcmlmeSB5b3VyIGVtYWlsIGFkZHJlc3M6XHJcbiAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICA8ZGl2IHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogIzdkMzYwMDsgY29sb3I6IHdoaXRlOyBwYWRkaW5nOiAxNXB4OyBib3JkZXItcmFkaXVzOiA1cHg7IGZvbnQtc2l6ZTogMjRweDsgZm9udC13ZWlnaHQ6IGJvbGQ7IGxldHRlci1zcGFjaW5nOiAzcHg7IG1hcmdpbjogMjBweCAwO1wiPlxyXG4gICAgICAgICAgICAke290cH1cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPHAgc3R5bGU9XCJjb2xvcjogIzY2NjsgZm9udC1zaXplOiAxNHB4OyBtYXJnaW4tdG9wOiAyMHB4O1wiPlxyXG4gICAgICAgICAgICBUaGlzIE9UUCBpcyB2YWxpZCBmb3IgMTAgbWludXRlcyBvbmx5LlxyXG4gICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPHAgc3R5bGU9XCJjb2xvcjogIzk5OTsgZm9udC1zaXplOiAxMnB4OyBtYXJnaW4tdG9wOiAzMHB4O1wiPlxyXG4gICAgICAgICAgICBJZiB5b3UgZGlkbid0IHJlcXVlc3QgdGhpcyB2ZXJpZmljYXRpb24sIHBsZWFzZSBpZ25vcmUgdGhpcyBlbWFpbC5cclxuICAgICAgICAgIDwvcD5cclxuICAgICAgICA8L2Rpdj5cclxuICAgICAgPC9kaXY+XHJcbiAgICBgLFxyXG4gIH07XHJcblxyXG4gIHRyeSB7XHJcbiAgICBhd2FpdCB0cmFuc3BvcnRlci5zZW5kTWFpbChtYWlsT3B0aW9ucyk7XHJcbiAgICByZXR1cm4geyBzdWNjZXNzOiB0cnVlIH07XHJcbiAgfSBjYXRjaCAoZXJyb3IpIHtcclxuICAgIGNvbnNvbGUuZXJyb3IoJ0Vycm9yIHNlbmRpbmcgT1RQIGVtYWlsOicsIGVycm9yKTtcclxuICAgIHJldHVybiB7IHN1Y2Nlc3M6IGZhbHNlLCBlcnJvcjogZXJyb3IgfTtcclxuICB9XHJcbn07XHJcblxyXG4vLyBTZW5kIG9yZGVyIGNvbmZpcm1hdGlvbiBlbWFpbFxyXG5leHBvcnQgY29uc3Qgc2VuZE9yZGVyQ29uZmlybWF0aW9uRW1haWwgPSBhc3luYyAob3JkZXJEZXRhaWxzOiBhbnkpID0+IHtcclxuICBjb25zdCB0cmFuc3BvcnRlciA9IGNyZWF0ZVRyYW5zcG9ydGVyKCk7XHJcbiAgXHJcbiAgY29uc3QgeyBlbWFpbCwgbmFtZSwgb3JkZXJJZCwgaXRlbXMsIHRvdGFsUHJpY2UsIGFkZHJlc3MsIHBob25lIH0gPSBvcmRlckRldGFpbHM7XHJcbiAgXHJcbiAgY29uc3QgaXRlbXNIdG1sID0gaXRlbXMubWFwKChpdGVtOiBhbnkpID0+IGBcclxuICAgIDx0ciBzdHlsZT1cImJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZWVlO1wiPlxyXG4gICAgICA8dGQgc3R5bGU9XCJwYWRkaW5nOiAxMHB4OyB0ZXh0LWFsaWduOiBsZWZ0O1wiPiR7aXRlbS5wcm9kdWN0X25hbWV9PC90ZD5cclxuICAgICAgPHRkIHN0eWxlPVwicGFkZGluZzogMTBweDsgdGV4dC1hbGlnbjogY2VudGVyO1wiPiR7aXRlbS52YXJpYW50X3F1YW50aXR5fTwvdGQ+XHJcbiAgICAgIDx0ZCBzdHlsZT1cInBhZGRpbmc6IDEwcHg7IHRleHQtYWxpZ246IGNlbnRlcjtcIj4ke2l0ZW0ucXVhbnRpdHl9PC90ZD5cclxuICAgICAgPHRkIHN0eWxlPVwicGFkZGluZzogMTBweDsgdGV4dC1hbGlnbjogcmlnaHQ7XCI+4oK5JHtpdGVtLnVuaXRfcHJpY2V9PC90ZD5cclxuICAgICAgPHRkIHN0eWxlPVwicGFkZGluZzogMTBweDsgdGV4dC1hbGlnbjogcmlnaHQ7IGZvbnQtd2VpZ2h0OiBib2xkO1wiPuKCuSR7aXRlbS50b3RhbF9wcmljZX08L3RkPlxyXG4gICAgPC90cj5cclxuICBgKS5qb2luKCcnKTtcclxuXHJcbiAgY29uc3QgbWFpbE9wdGlvbnMgPSB7XHJcbiAgICBmcm9tOiBwcm9jZXNzLmVudi5HTUFJTF9FTUFJTCxcclxuICAgIHRvOiBlbWFpbCxcclxuICAgIHN1YmplY3Q6IGBPcmRlciBDb25maXJtYXRpb24gLSAjJHtvcmRlcklkfSAtIEFOVkVEQWAsXHJcbiAgICBodG1sOiBgXHJcbiAgICAgIDxkaXYgc3R5bGU9XCJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7IG1heC13aWR0aDogNzAwcHg7IG1hcmdpbjogMCBhdXRvOyBwYWRkaW5nOiAyMHB4OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZjlmNWVmO1wiPlxyXG4gICAgICAgIDxkaXYgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgcGFkZGluZzogMzBweDsgYm9yZGVyLXJhZGl1czogMTBweDtcIj5cclxuICAgICAgICAgIDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi1ib3R0b206IDMwcHg7XCI+XHJcbiAgICAgICAgICAgIDxoMSBzdHlsZT1cImNvbG9yOiAjN2QzNjAwOyBtYXJnaW4tYm90dG9tOiAxMHB4O1wiPlxyXG4gICAgICAgICAgICAgIDxzcGFuIHN0eWxlPVwiY29sb3I6ICNFREJDN0U7XCI+QU5WRURBPC9zcGFuPlxyXG4gICAgICAgICAgICA8L2gxPlxyXG4gICAgICAgICAgICA8ZGl2IHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogIzRDQUY1MDsgY29sb3I6IHdoaXRlOyBwYWRkaW5nOiAxMHB4OyBib3JkZXItcmFkaXVzOiA1cHg7IGRpc3BsYXk6IGlubGluZS1ibG9jaztcIj5cclxuICAgICAgICAgICAgICDinIUgT3JkZXIgQ29uZmlybWVkXHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICBcclxuICAgICAgICAgIDxoMiBzdHlsZT1cImNvbG9yOiAjMzMzOyBtYXJnaW4tYm90dG9tOiAyMHB4O1wiPlRoYW5rIHlvdSBmb3IgeW91ciBvcmRlciwgJHtuYW1lfSE8L2gyPlxyXG4gICAgICAgICAgXHJcbiAgICAgICAgICA8ZGl2IHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogI2Y4ZjlmYTsgcGFkZGluZzogMjBweDsgYm9yZGVyLXJhZGl1czogNXB4OyBtYXJnaW4tYm90dG9tOiAyMHB4O1wiPlxyXG4gICAgICAgICAgICA8aDMgc3R5bGU9XCJjb2xvcjogIzdkMzYwMDsgbWFyZ2luLXRvcDogMDtcIj5PcmRlciBEZXRhaWxzPC9oMz5cclxuICAgICAgICAgICAgPHA+PHN0cm9uZz5PcmRlciBJRDo8L3N0cm9uZz4gIyR7b3JkZXJJZH08L3A+XHJcbiAgICAgICAgICAgIDxwPjxzdHJvbmc+RW1haWw6PC9zdHJvbmc+ICR7ZW1haWx9PC9wPlxyXG4gICAgICAgICAgICA8cD48c3Ryb25nPlBob25lOjwvc3Ryb25nPiAke3Bob25lfTwvcD5cclxuICAgICAgICAgICAgPHA+PHN0cm9uZz5EZWxpdmVyeSBBZGRyZXNzOjwvc3Ryb25nPjxicj4ke2FkZHJlc3N9PC9wPlxyXG4gICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgPGgzIHN0eWxlPVwiY29sb3I6ICM3ZDM2MDA7IG1hcmdpbi1ib3R0b206IDE1cHg7XCI+SXRlbXMgT3JkZXJlZDwvaDM+XHJcbiAgICAgICAgICA8dGFibGUgc3R5bGU9XCJ3aWR0aDogMTAwJTsgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsgbWFyZ2luLWJvdHRvbTogMjBweDtcIj5cclxuICAgICAgICAgICAgPHRoZWFkPlxyXG4gICAgICAgICAgICAgIDx0ciBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICM3ZDM2MDA7IGNvbG9yOiB3aGl0ZTtcIj5cclxuICAgICAgICAgICAgICAgIDx0aCBzdHlsZT1cInBhZGRpbmc6IDEycHg7IHRleHQtYWxpZ246IGxlZnQ7XCI+UHJvZHVjdDwvdGg+XHJcbiAgICAgICAgICAgICAgICA8dGggc3R5bGU9XCJwYWRkaW5nOiAxMnB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7XCI+U2l6ZTwvdGg+XHJcbiAgICAgICAgICAgICAgICA8dGggc3R5bGU9XCJwYWRkaW5nOiAxMnB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7XCI+UXR5PC90aD5cclxuICAgICAgICAgICAgICAgIDx0aCBzdHlsZT1cInBhZGRpbmc6IDEycHg7IHRleHQtYWxpZ246IHJpZ2h0O1wiPlByaWNlPC90aD5cclxuICAgICAgICAgICAgICAgIDx0aCBzdHlsZT1cInBhZGRpbmc6IDEycHg7IHRleHQtYWxpZ246IHJpZ2h0O1wiPlRvdGFsPC90aD5cclxuICAgICAgICAgICAgICA8L3RyPlxyXG4gICAgICAgICAgICA8L3RoZWFkPlxyXG4gICAgICAgICAgICA8dGJvZHk+XHJcbiAgICAgICAgICAgICAgJHtpdGVtc0h0bWx9XHJcbiAgICAgICAgICAgIDwvdGJvZHk+XHJcbiAgICAgICAgICA8L3RhYmxlPlxyXG5cclxuICAgICAgICAgIDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiByaWdodDsgbWFyZ2luLWJvdHRvbTogMzBweDtcIj5cclxuICAgICAgICAgICAgPGRpdiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICM3ZDM2MDA7IGNvbG9yOiB3aGl0ZTsgcGFkZGluZzogMTVweDsgYm9yZGVyLXJhZGl1czogNXB4OyBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XCI+XHJcbiAgICAgICAgICAgICAgPGgzIHN0eWxlPVwibWFyZ2luOiAwO1wiPlRvdGFsIEFtb3VudDog4oK5JHt0b3RhbFByaWNlfTwvaDM+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgICAgPGRpdiBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6ICNlOGY1ZTg7IHBhZGRpbmc6IDIwcHg7IGJvcmRlci1yYWRpdXM6IDVweDsgbWFyZ2luLWJvdHRvbTogMjBweDtcIj5cclxuICAgICAgICAgICAgPGg0IHN0eWxlPVwiY29sb3I6ICMyZTdkMzI7IG1hcmdpbi10b3A6IDA7XCI+V2hhdCdzIE5leHQ/PC9oND5cclxuICAgICAgICAgICAgPHVsIHN0eWxlPVwiY29sb3I6ICM2NjY7IG1hcmdpbjogMDsgcGFkZGluZy1sZWZ0OiAyMHB4O1wiPlxyXG4gICAgICAgICAgICAgIDxsaT5XZSdsbCBwcm9jZXNzIHlvdXIgb3JkZXIgd2l0aGluIDI0IGhvdXJzPC9saT5cclxuICAgICAgICAgICAgICA8bGk+WW91J2xsIHJlY2VpdmUgYSBzaGlwcGluZyBjb25maXJtYXRpb24gd2l0aCB0cmFja2luZyBkZXRhaWxzPC9saT5cclxuICAgICAgICAgICAgICA8bGk+RXhwZWN0ZWQgZGVsaXZlcnk6IDMtNSBidXNpbmVzcyBkYXlzPC9saT5cclxuICAgICAgICAgICAgICA8bGk+RnJlZSBkZWxpdmVyeSBvbiBhbGwgb3JkZXJzPC9saT5cclxuICAgICAgICAgICAgPC91bD5cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi10b3A6IDMwcHg7XCI+XHJcbiAgICAgICAgICAgIDxwIHN0eWxlPVwiY29sb3I6ICM2NjY7XCI+TmVlZCBoZWxwPyBDb250YWN0IHVzOjwvcD5cclxuICAgICAgICAgICAgPHAgc3R5bGU9XCJjb2xvcjogIzdkMzYwMDsgZm9udC13ZWlnaHQ6IGJvbGQ7XCI+XHJcbiAgICAgICAgICAgICAg8J+TsSArOTEgNzUyMDAgODE3MTcgfCDwn5OnIHJha3NoaXR0Z3VwdGFAZ21haWwuY29tXHJcbiAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi10b3A6IDMwcHg7IHBhZGRpbmctdG9wOiAyMHB4OyBib3JkZXItdG9wOiAxcHggc29saWQgI2VlZTtcIj5cclxuICAgICAgICAgICAgPHAgc3R5bGU9XCJjb2xvcjogIzk5OTsgZm9udC1zaXplOiAxMnB4O1wiPlxyXG4gICAgICAgICAgICAgIFRoYW5rIHlvdSBmb3IgY2hvb3NpbmcgQU5WRURBIC0gUHJlbWl1bSBBMiBHaGVlPGJyPlxyXG4gICAgICAgICAgICAgIFRyYWRpdGlvbmFsIE1ldGhvZHMg4oCiIE1vZGVybiBRdWFsaXR5XHJcbiAgICAgICAgICAgIDwvcD5cclxuICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgICA8L2Rpdj5cclxuICAgIGAsXHJcbiAgfTtcclxuXHJcbiAgdHJ5IHtcclxuICAgIGF3YWl0IHRyYW5zcG9ydGVyLnNlbmRNYWlsKG1haWxPcHRpb25zKTtcclxuICAgIHJldHVybiB7IHN1Y2Nlc3M6IHRydWUgfTtcclxuICB9IGNhdGNoIChlcnJvcikge1xyXG4gICAgY29uc29sZS5lcnJvcignRXJyb3Igc2VuZGluZyBvcmRlciBjb25maXJtYXRpb24gZW1haWw6JywgZXJyb3IpO1xyXG4gICAgcmV0dXJuIHsgc3VjY2VzczogZmFsc2UsIGVycm9yOiBlcnJvciB9O1xyXG4gIH1cclxufTtcclxuXHJcbi8vIFNlbmQgbmV3c2xldHRlciBzdWJzY3JpcHRpb24gZW1haWxcclxuZXhwb3J0IGNvbnN0IHNlbmROZXdzbGV0dGVyV2VsY29tZUVtYWlsID0gYXN5bmMgKGVtYWlsOiBzdHJpbmcpID0+IHtcclxuICBjb25zdCB0cmFuc3BvcnRlciA9IGNyZWF0ZVRyYW5zcG9ydGVyKCk7XHJcbiAgXHJcbiAgY29uc3QgbWFpbE9wdGlvbnMgPSB7XHJcbiAgICBmcm9tOiBwcm9jZXNzLmVudi5HTUFJTF9FTUFJTCxcclxuICAgIHRvOiBlbWFpbCxcclxuICAgIHN1YmplY3Q6ICdXZWxjb21lIHRvIEFOVkVEQSBOZXdzbGV0dGVyIScsXHJcbiAgICBodG1sOiBgXHJcbiAgICAgIDxkaXYgc3R5bGU9XCJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7IG1heC13aWR0aDogNjAwcHg7IG1hcmdpbjogMCBhdXRvOyBwYWRkaW5nOiAyMHB4OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZjlmNWVmO1wiPlxyXG4gICAgICAgIDxkaXYgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgcGFkZGluZzogMzBweDsgYm9yZGVyLXJhZGl1czogMTBweDtcIj5cclxuICAgICAgICAgIDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi1ib3R0b206IDMwcHg7XCI+XHJcbiAgICAgICAgICAgIDxoMSBzdHlsZT1cImNvbG9yOiAjN2QzNjAwOyBtYXJnaW4tYm90dG9tOiAxMHB4O1wiPlxyXG4gICAgICAgICAgICAgIDxzcGFuIHN0eWxlPVwiY29sb3I6ICNFREJDN0U7XCI+QU5WRURBPC9zcGFuPlxyXG4gICAgICAgICAgICA8L2gxPlxyXG4gICAgICAgICAgICA8ZGl2IHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogIzRDQUY1MDsgY29sb3I6IHdoaXRlOyBwYWRkaW5nOiAxMHB4OyBib3JkZXItcmFkaXVzOiA1cHg7IGRpc3BsYXk6IGlubGluZS1ibG9jaztcIj5cclxuICAgICAgICAgICAgICDwn46JIFdlbGNvbWUgdG8gdGhlIEZhbWlseSFcclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuICAgICAgICAgIFxyXG4gICAgICAgICAgPGgyIHN0eWxlPVwiY29sb3I6ICMzMzM7IG1hcmdpbi1ib3R0b206IDIwcHg7XCI+VGhhbmsgeW91IGZvciBzdWJzY3JpYmluZyE8L2gyPlxyXG4gICAgICAgICAgXHJcbiAgICAgICAgICA8cCBzdHlsZT1cImNvbG9yOiAjNjY2OyBsaW5lLWhlaWdodDogMS42OyBtYXJnaW4tYm90dG9tOiAyMHB4O1wiPlxyXG4gICAgICAgICAgICBZb3UncmUgbm93IHBhcnQgb2YgdGhlIEFOVkVEQSBmYW1pbHkhIFdlJ3JlIGV4Y2l0ZWQgdG8gc2hhcmUgd2l0aCB5b3U6XHJcbiAgICAgICAgICA8L3A+XHJcblxyXG4gICAgICAgICAgPHVsIHN0eWxlPVwiY29sb3I6ICM2NjY7IGxpbmUtaGVpZ2h0OiAxLjg7IG1hcmdpbi1ib3R0b206IDMwcHg7XCI+XHJcbiAgICAgICAgICAgIDxsaT7wn4yfIEV4Y2x1c2l2ZSBvZmZlcnMgYW5kIGRpc2NvdW50czwvbGk+XHJcbiAgICAgICAgICAgIDxsaT7wn6WbIEhlYWx0aCB0aXBzIGFuZCBBMiBnaGVlIGJlbmVmaXRzPC9saT5cclxuICAgICAgICAgICAgPGxpPvCfk7AgTGF0ZXN0IHByb2R1Y3QgbGF1bmNoZXM8L2xpPlxyXG4gICAgICAgICAgICA8bGk+8J+RqOKAjfCfjbMgVHJhZGl0aW9uYWwgcmVjaXBlcyBhbmQgY29va2luZyB0aXBzPC9saT5cclxuICAgICAgICAgICAgPGxpPvCfjoEgU3BlY2lhbCBzdWJzY3JpYmVyLW9ubHkgZGVhbHM8L2xpPlxyXG4gICAgICAgICAgPC91bD5cclxuXHJcbiAgICAgICAgICA8ZGl2IHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogI2ZmZjhlMTsgcGFkZGluZzogMjBweDsgYm9yZGVyLXJhZGl1czogNXB4OyBtYXJnaW4tYm90dG9tOiAyMHB4OyBib3JkZXItbGVmdDogNHB4IHNvbGlkICNFREJDN0U7XCI+XHJcbiAgICAgICAgICAgIDxoMyBzdHlsZT1cImNvbG9yOiAjN2QzNjAwOyBtYXJnaW4tdG9wOiAwO1wiPkRpZCB5b3Uga25vdz88L2gzPlxyXG4gICAgICAgICAgICA8cCBzdHlsZT1cImNvbG9yOiAjNjY2OyBtYXJnaW46IDA7XCI+XHJcbiAgICAgICAgICAgICAgQTIgZ2hlZSBjb250YWlucyBvbmx5IEEyIGJldGEtY2FzZWluIHByb3RlaW4sIHdoaWNoIGlzIGVhc2llciB0byBkaWdlc3QgYW5kIG1heSBoYXZlIGFkZGl0aW9uYWwgaGVhbHRoIGJlbmVmaXRzIGNvbXBhcmVkIHRvIHJlZ3VsYXIgZ2hlZS4gT3VyIHRyYWRpdGlvbmFsIGNodXJuaW5nIG1ldGhvZHMgcHJlc2VydmUgYWxsIHRoZSBuYXR1cmFsIGdvb2RuZXNzIVxyXG4gICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICA8ZGl2IHN0eWxlPVwidGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW46IDMwcHggMDtcIj5cclxuICAgICAgICAgICAgPGEgaHJlZj1cIiR7cHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfU0lURV9VUkwgfHwgJ2h0dHBzOi8vYW52ZWRhLmNvbSd9XCIgXHJcbiAgICAgICAgICAgICAgIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogIzdkMzYwMDsgY29sb3I6IHdoaXRlOyBwYWRkaW5nOiAxNXB4IDMwcHg7IHRleHQtZGVjb3JhdGlvbjogbm9uZTsgYm9yZGVyLXJhZGl1czogNXB4OyBmb250LXdlaWdodDogYm9sZDsgZGlzcGxheTogaW5saW5lLWJsb2NrO1wiPlxyXG4gICAgICAgICAgICAgIFNob3AgUHJlbWl1bSBBMiBHaGVlXHJcbiAgICAgICAgICAgIDwvYT5cclxuICAgICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICAgIDxkaXYgc3R5bGU9XCJ0ZXh0LWFsaWduOiBjZW50ZXI7IG1hcmdpbi10b3A6IDMwcHg7XCI+XHJcbiAgICAgICAgICAgIDxwIHN0eWxlPVwiY29sb3I6ICM2NjY7XCI+U3RheSBjb25uZWN0ZWQgd2l0aCB1czo8L3A+XHJcbiAgICAgICAgICAgIDxwIHN0eWxlPVwiY29sb3I6ICM3ZDM2MDA7IGZvbnQtd2VpZ2h0OiBib2xkO1wiPlxyXG4gICAgICAgICAgICAgIPCfk7EgKzkxIDc1MjAwIDgxNzE3IHwg8J+TpyByYWtzaGl0dGd1cHRhQGdtYWlsLmNvbVxyXG4gICAgICAgICAgICA8L3A+XHJcbiAgICAgICAgICA8L2Rpdj5cclxuXHJcbiAgICAgICAgICA8ZGl2IHN0eWxlPVwidGV4dC1hbGlnbjogY2VudGVyOyBtYXJnaW4tdG9wOiAzMHB4OyBwYWRkaW5nLXRvcDogMjBweDsgYm9yZGVyLXRvcDogMXB4IHNvbGlkICNlZWU7XCI+XHJcbiAgICAgICAgICAgIDxwIHN0eWxlPVwiY29sb3I6ICM5OTk7IGZvbnQtc2l6ZTogMTJweDtcIj5cclxuICAgICAgICAgICAgICBZb3UgY2FuIHVuc3Vic2NyaWJlIGF0IGFueSB0aW1lIGJ5IHJlcGx5aW5nIHRvIHRoaXMgZW1haWwuPGJyPlxyXG4gICAgICAgICAgICAgIEFOVkVEQSAtIFByZW1pdW0gQTIgR2hlZSDigKIgVHJhZGl0aW9uYWwgTWV0aG9kcyDigKIgTW9kZXJuIFF1YWxpdHlcclxuICAgICAgICAgICAgPC9wPlxyXG4gICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICAgIDwvZGl2PlxyXG4gICAgYCxcclxuICB9O1xyXG5cclxuICB0cnkge1xyXG4gICAgYXdhaXQgdHJhbnNwb3J0ZXIuc2VuZE1haWwobWFpbE9wdGlvbnMpO1xyXG4gICAgcmV0dXJuIHsgc3VjY2VzczogdHJ1ZSB9O1xyXG4gIH0gY2F0Y2ggKGVycm9yKSB7XHJcbiAgICBjb25zb2xlLmVycm9yKCdFcnJvciBzZW5kaW5nIG5ld3NsZXR0ZXIgd2VsY29tZSBlbWFpbDonLCBlcnJvcik7XHJcbiAgICByZXR1cm4geyBzdWNjZXNzOiBmYWxzZSwgZXJyb3I6IGVycm9yIH07XHJcbiAgfVxyXG59O1xyXG4iXSwibmFtZXMiOlsibm9kZW1haWxlciIsImNyZWF0ZVRyYW5zcG9ydGVyIiwiY3JlYXRlVHJhbnNwb3J0Iiwic2VydmljZSIsImF1dGgiLCJ1c2VyIiwicHJvY2VzcyIsImVudiIsIkdNQUlMX0VNQUlMIiwicGFzcyIsIkdNQUlMX0FQUF9QQVNTV09SRCIsInNlbmRPVFBFbWFpbCIsImVtYWlsIiwib3RwIiwidHJhbnNwb3J0ZXIiLCJtYWlsT3B0aW9ucyIsImZyb20iLCJ0byIsInN1YmplY3QiLCJodG1sIiwic2VuZE1haWwiLCJzdWNjZXNzIiwiZXJyb3IiLCJjb25zb2xlIiwic2VuZE9yZGVyQ29uZmlybWF0aW9uRW1haWwiLCJvcmRlckRldGFpbHMiLCJuYW1lIiwib3JkZXJJZCIsIml0ZW1zIiwidG90YWxQcmljZSIsImFkZHJlc3MiLCJwaG9uZSIsIml0ZW1zSHRtbCIsIm1hcCIsIml0ZW0iLCJwcm9kdWN0X25hbWUiLCJ2YXJpYW50X3F1YW50aXR5IiwicXVhbnRpdHkiLCJ1bml0X3ByaWNlIiwidG90YWxfcHJpY2UiLCJqb2luIiwic2VuZE5ld3NsZXR0ZXJXZWxjb21lRW1haWwiLCJORVhUX1BVQkxJQ19TSVRFX1VSTCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./lib/emailService.ts\n");
+
+/***/ }),
+
+/***/ "(rsc)/./lib/supabaseClient.ts":
+/*!*******************************!*\
+  !*** ./lib/supabaseClient.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   supabase: () => (/* binding */ supabase)\n/* harmony export */ });\n/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/supabase-js */ \"(rsc)/./node_modules/@supabase/supabase-js/dist/module/index.js\");\n\n// Next.js environment variables\nconst supabaseUrl = \"https://scxpgzgxqgjnrvfybcyc.supabase.co\";\nconst supabaseAnonKey = \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNjeHBnemd4cWdqbnJ2ZnliY3ljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE3NDk0NjgsImV4cCI6MjA2NzMyNTQ2OH0.l84EQBLql2WKQoRTD-0CPsLtOF5bVEdmS6IYmrKzwmg\";\n// Fallback values for development/testing\nconst defaultUrl = \"https://your-project.supabase.co\";\nconst defaultKey = \"your-anon-key\";\n//aa\nconst supabase = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__.createClient)(supabaseUrl || defaultUrl, supabaseAnonKey || defaultKey);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9saWIvc3VwYWJhc2VDbGllbnQudHMiLCJtYXBwaW5ncyI6Ijs7Ozs7QUFBcUQ7QUFFckQsZ0NBQWdDO0FBQ2hDLE1BQU1DLGNBQWNDLDBDQUFvQztBQUN4RCxNQUFNRyxrQkFBa0JILGtOQUF5QztBQUVqRSwwQ0FBMEM7QUFDMUMsTUFBTUssYUFBYTtBQUNuQixNQUFNQyxhQUFhO0FBQ25CLElBQUk7QUFDRyxNQUFNQyxXQUFXVCxtRUFBWUEsQ0FDbENDLGVBQWVNLFlBQ2ZGLG1CQUFtQkcsWUFDbkIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9uZXh0anNfcmVhY3Rfc2hhZGNuX3RzLy4vbGliL3N1cGFiYXNlQ2xpZW50LnRzPzNhN2QiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgY3JlYXRlQ2xpZW50IH0gZnJvbSAnQHN1cGFiYXNlL3N1cGFiYXNlLWpzJztcblxuLy8gTmV4dC5qcyBlbnZpcm9ubWVudCB2YXJpYWJsZXNcbmNvbnN0IHN1cGFiYXNlVXJsID0gcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfU1VQQUJBU0VfVVJMO1xuY29uc3Qgc3VwYWJhc2VBbm9uS2V5ID0gcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfU1VQQUJBU0VfQU5PTl9LRVk7XG5cbi8vIEZhbGxiYWNrIHZhbHVlcyBmb3IgZGV2ZWxvcG1lbnQvdGVzdGluZ1xuY29uc3QgZGVmYXVsdFVybCA9ICdodHRwczovL3lvdXItcHJvamVjdC5zdXBhYmFzZS5jbyc7XG5jb25zdCBkZWZhdWx0S2V5ID0gJ3lvdXItYW5vbi1rZXknO1xuLy9hYVxuZXhwb3J0IGNvbnN0IHN1cGFiYXNlID0gY3JlYXRlQ2xpZW50KFxuICBzdXBhYmFzZVVybCB8fCBkZWZhdWx0VXJsLFxuICBzdXBhYmFzZUFub25LZXkgfHwgZGVmYXVsdEtleVxuKTtcbiJdLCJuYW1lcyI6WyJjcmVhdGVDbGllbnQiLCJzdXBhYmFzZVVybCIsInByb2Nlc3MiLCJlbnYiLCJORVhUX1BVQkxJQ19TVVBBQkFTRV9VUkwiLCJzdXBhYmFzZUFub25LZXkiLCJORVhUX1BVQkxJQ19TVVBBQkFTRV9BTk9OX0tFWSIsImRlZmF1bHRVcmwiLCJkZWZhdWx0S2V5Iiwic3VwYWJhc2UiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./lib/supabaseClient.ts\n");
+
+/***/ })
+
+};
+;
+
+// load runtime
+var __webpack_require__ = require("../../../webpack-runtime.js");
+__webpack_require__.C(exports);
+var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@supabase","vendor-chunks/tr46","vendor-chunks/nodemailer","vendor-chunks/ws","vendor-chunks/whatwg-url","vendor-chunks/webidl-conversions","vendor-chunks/isows"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fsend-otp%2Froute&page=%2Fapi%2Fsend-otp%2Froute&appPaths=&pagePath=private-next-app-dir%2Fapi%2Fsend-otp%2Froute.ts&appDir=E%3A%5Canvad%5Capp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=E%3A%5Canvad&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+module.exports = __webpack_exports__;
+
+})();
