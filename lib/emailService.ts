@@ -11,6 +11,8 @@ const createTransporter = () => {
   });
 };
 
+
+
 // Send OTP email
 export const sendOTPEmail = async (email: string, otp: string) => {
   const transporter = createTransporter();
