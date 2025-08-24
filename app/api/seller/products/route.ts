@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
           stock_quantity
         )
       `)
-      .order('id', { ascending: true });
+      .order('created_at', { ascending: false });
 
     // Filter by featured if specified
     if (featured === 'true') {
