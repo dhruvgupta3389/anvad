@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabaseClient';
+import { createClient } from '@supabase/supabase-js';
 
-// Try to use server-side client if available, fallback to client-side
-let supabaseClient = supabase;
-try {
-  const { supabaseServer } = require('@/lib/supabaseServer');
-  if (supabaseServer) {
-    supabaseClient = supabaseServer;
+// Create Supabase client with proper error handling
+const createSupabaseClient = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Missing Supabase environment variables');
   }
-} catch (error) {
-  console.log('Using client-side Supabase client in API route');
-}
+  
+  return createClient(supabaseUrl, supabaseKey);
+};
 
 export async function GET(request: NextRequest) {
   try {
@@ -18,8 +19,20 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '20');
     const featured = searchParams.get('featured');
-
+    
     const offset = (page - 1) * limit;
+
+    // Initialize Supabase client
+    let supabase;
+    try {
+      supabase = createSupabaseClient();
+    } catch (envError) {
+      console.error('Supabase environment error:', envError);
+      return NextResponse.json(
+        { error: 'Database configuration error' },
+        { status: 500 }
+      );
+    }
 
     // Image mapping for legacy data
     const imageMap: { [key: string]: string } = {
@@ -28,8 +41,21 @@ export async function GET(request: NextRequest) {
       'buffaloGhee': 'https://images.pexels.com/photos/315420/pexels-photo-315420.jpeg?w=500&h=600&fit=crop&crop=center'
     };
 
-    // Build query - order by id since created_at might not exist
-    let query = supabaseClient
+    // Test basic connection first
+    const { data: testData, error: testError } = await supabase
+      .from('products')
+      .select('count', { count: 'exact', head: true });
+
+    if (testError) {
+      console.error('Supabase connection test failed:', testError);
+      return NextResponse.json(
+        { error: 'Database connection failed', details: testError.message },
+        { status: 500 }
+      );
+    }
+
+    // Build query step by step
+    let query = supabase
       .from('products')
       .select(`
         id,
@@ -41,18 +67,9 @@ export async function GET(request: NextRequest) {
         rating,
         reviews,
         is_featured,
-        in_stock,
-        variants (
-          id,
-          quantity,
-          price,
-          original_price,
-          sku,
-          in_stock,
-          stock_quantity
-        )
+        in_stock
       `)
-      .order('created_at', { ascending: false });
+      .order('id', { ascending: true });
 
     // Filter by featured if specified
     if (featured === 'true') {
@@ -60,44 +77,58 @@ export async function GET(request: NextRequest) {
     }
 
     // Apply pagination
-    const { data: products, error } = await query
+    const { data: products, error: productsError } = await query
       .range(offset, offset + limit - 1);
 
-    if (error) {
-      console.error('Products API error:', error);
+    if (productsError) {
+      console.error('Products query error:', productsError);
       return NextResponse.json(
-        { error: 'Failed to fetch products', details: error.message },
+        { error: 'Failed to fetch products', details: productsError.message },
         { status: 500 }
       );
     }
 
+    // Get variants separately to avoid complex joins
+    const productIds = (products || []).map(p => p.id);
+    const { data: variants, error: variantsError } = await supabase
+      .from('variants')
+      .select('*')
+      .in('product_id', productIds);
+
+    if (variantsError) {
+      console.warn('Variants query error:', variantsError);
+      // Continue without variants rather than failing
+    }
+
     // Transform the data to match the expected format
-    const transformedProducts = (products || []).map(product => ({
-      id: product.id,
-      title: product.name,
-      description: product.description,
-      image_url: imageMap[product.image] || product.image || 'https://images.pexels.com/photos/9105966/pexels-photo-9105966.jpeg?w=500&h=600&fit=crop&crop=center',
-      price: parseFloat(product.base_price || '0'),
-      sku: product.sku,
-      rating: parseFloat(product.rating || '0'),
-      reviews_count: product.reviews || 0,
-      is_featured: product.is_featured || false,
-      in_stock: product.in_stock !== false,
-      variants: (product.variants || []).map((variant: any) => ({
-        id: variant.sku || variant.id,
-        title: variant.quantity,
-        price: parseFloat(variant.price || '0'),
-        original_price: parseFloat(variant.original_price || variant.price || '0'),
-        sku: variant.sku,
-        in_stock: variant.in_stock !== false,
-        stock_quantity: variant.stock_quantity || 0
-      }))
-    }));
+    const transformedProducts = (products || []).map(product => {
+      const productVariants = (variants || []).filter(v => v.product_id === product.id);
+      
+      return {
+        id: product.id,
+        title: product.name || '',
+        description: product.description || '',
+        image_url: imageMap[product.image] || product.image || 'https://images.pexels.com/photos/9105966/pexels-photo-9105966.jpeg?w=500&h=600&fit=crop&crop=center',
+        price: parseFloat(product.base_price || '0'),
+        sku: product.sku || '',
+        rating: parseFloat(product.rating || '0'),
+        reviews_count: product.reviews || 0,
+        is_featured: product.is_featured || false,
+        in_stock: product.in_stock !== false,
+        variants: productVariants.map((variant: any) => ({
+          id: variant.sku || variant.id || '',
+          title: variant.quantity || '',
+          price: parseFloat(variant.price || '0'),
+          original_price: parseFloat(variant.original_price || variant.price || '0'),
+          sku: variant.sku || '',
+          in_stock: variant.in_stock !== false,
+          stock_quantity: variant.stock_quantity || 0
+        }))
+      };
+    });
 
     // Get total count for pagination
-    const { count: totalCount } = await supabaseClient
-      .from('products')
-      .select('*', { count: 'exact', head: true });
+    const totalCount = testData || 0;
 
     return NextResponse.json({
       success: true,
@@ -105,17 +136,21 @@ export async function GET(request: NextRequest) {
       pagination: {
         page,
         limit,
-        total: totalCount || 0,
-        totalPages: Math.ceil((totalCount || 0) / limit),
-        hasNext: page * limit < (totalCount || 0),
+        total: totalCount,
+        totalPages: Math.ceil(totalCount / limit),
+        hasNext: page * limit < totalCount,
         hasPrev: page > 1
       }
     });
 
   } catch (error) {
-    console.error('Products API error:', error);
+    console.error('Products API unexpected error:', error);
     return NextResponse.json(
-      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        error: 'Internal server error', 
+        details: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }
