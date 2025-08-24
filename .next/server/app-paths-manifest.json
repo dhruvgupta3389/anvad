@@ -1,6 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/api/subscribe-newsletter/route": "app/api/subscribe-newsletter/route.js"
+  "/cart/page": "app/cart/page.js",
+  "/page": "app/page.js"
 }
