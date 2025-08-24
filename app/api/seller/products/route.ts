@@ -1,6 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
 
+// Try to use server-side client if available, fallback to client-side
+let supabaseClient = supabase;
+try {
+  const { supabaseServer } = require('@/lib/supabaseServer');
+  if (supabaseServer) {
+    supabaseClient = supabaseServer;
+  }
+} catch (error) {
+  console.log('Using client-side Supabase client in API route');
+}
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -18,7 +29,7 @@ export async function GET(request: NextRequest) {
     };
 
     // Build query - order by id since created_at might not exist
-    let query = supabase
+    let query = supabaseClient
       .from('products')
       .select(`
         id,
@@ -84,7 +95,7 @@ export async function GET(request: NextRequest) {
     }));
 
     // Get total count for pagination
-    const { count: totalCount } = await supabase
+    const { count: totalCount } = await supabaseClient
       .from('products')
       .select('*', { count: 'exact', head: true });
 
