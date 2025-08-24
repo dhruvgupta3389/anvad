@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "product": {
+        "id": 1,
+        "name": "Gir Cow A2 Ghee"
+      },
+      "variant": {
+        "id": "GIR-1000ML",
+        "quantity": "1000ml",
+        "price": 1299,
+        "sku": "GIR-1000ML"
+      },
+      "quantity": 2
+    }
+  ]
+}
