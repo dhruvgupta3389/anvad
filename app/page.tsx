@@ -219,7 +219,7 @@ export default function HomePage() {
                   All Products
                 </h2>
                 <p className="text-gray-600">
-                  Discover our complete range of natural products
+                  Discover our premium collection of natural products
                 </p>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
