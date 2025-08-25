@@ -11,12 +11,6 @@ import { useSearch } from "@/contexts/SearchContext";
 // Category data from CategoryNavigation
 const mobileMenuCategories = [
   {
-    name: "All Products",
-    image: "https://images.pexels.com/photos/9105966/pexels-photo-9105966.jpeg?w=300&h=200&fit=crop&crop=center",
-    route: "/products/all-products",
-    hasProducts: true
-  },
-  {
     name: "A2 Ghee",
     image: "https://images.pexels.com/photos/8805026/pexels-photo-8805026.jpeg?w=300&h=200&fit=crop&crop=center",
     route: "/products/a2-ghee",
