@@ -1,7 +1,4 @@
 {
   "/page": "app/page.js",
-  "/api/seller/products/route": "app/api/seller/products/route.js",
-  "/products/[category]/page": "app/products/[category]/page.js",
-  "/api/seller/collections/route": "app/api/seller/collections/route.js",
-  "/api/seller/products/by-collection/route": "app/api/seller/products/by-collection/route.js"
+  "/api/seller/products/route": "app/api/seller/products/route.js"
 }
