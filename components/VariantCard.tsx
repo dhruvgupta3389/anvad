@@ -1,4 +1,4 @@
-import { ProductVariant } from "@/data/products";
+import { ProductVariant } from "@/types/product";
 import { motion } from "framer-motion";
 import { CheckCircle, XCircle } from "lucide-react";
 

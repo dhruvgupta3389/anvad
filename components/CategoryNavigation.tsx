@@ -13,13 +13,6 @@ interface CategoryItem {
 
 const categories: CategoryItem[] = [
   {
-    name: "All Products",
-    image: "https://images.pexels.com/photos/9105966/pexels-photo-9105966.jpeg?w=300&h=200&fit=crop&crop=center",
-    category: "All Products",
-    hasProducts: true,
-    route: "/products/all-products"
-  },
-  {
     name: "A2 Ghee",
     image: "https://images.pexels.com/photos/8805026/pexels-photo-8805026.jpeg?w=300&h=200&fit=crop&crop=center",
     category: "A2 Ghee",
