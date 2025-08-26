@@ -22,11 +22,34 @@ export async function GET(request: NextRequest) {
     } catch (envError) {
       console.error('Supabase environment error:', envError);
       return NextResponse.json(
-        { error: 'Database configuration error' },
+        { 
+          success: false,
+          error: 'Database configuration error',
+          timestamp: new Date().toISOString()
+        },
         { status: 500 }
       );
     }
 
+    // Test connection before querying
+    const { data: testData, error: testError } = await supabase
+      .from('collections')
+      .select('count', { count: 'exact', head: true });
+
+    if (testError) {
+      console.error('Collections connection test failed:', testError);
+      return NextResponse.json(
+        { 
+          success: false,
+          error: 'Database connection failed',
+          details: testError.message,
+          timestamp: new Date().toISOString()
+        },
+        { status: 500 }
+      );
+    }
+
+    // Query collections with error handling
     const { data: collections, error } = await supabase
       .from('collections')
       .select('id, title, description, slug')
@@ -35,20 +58,42 @@ export async function GET(request: NextRequest) {
     if (error) {
       console.error('Collections API error:', error);
       return NextResponse.json(
-        { error: 'Failed to fetch collections' },
+        { 
+          success: false,
+          error: 'Failed to fetch collections',
+          details: error.message,
+          timestamp: new Date().toISOString()
+        },
         { status: 500 }
       );
     }
 
+    // Validate and sanitize response data
+    const sanitizedCollections = (collections || []).map(collection => ({
+      id: collection.id,
+      title: collection.title || '',
+      description: collection.description || '',
+      slug: collection.slug || ''
+    }));
+
     return NextResponse.json({
       success: true,
-      data: collections || []
+      data: sanitizedCollections,
+      meta: {
+        total: sanitizedCollections.length,
+        timestamp: new Date().toISOString()
+      }
     });
 
   } catch (error) {
-    console.error('Collections API error:', error);
+    console.error('Collections API unexpected error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { 
+        success: false,
+        error: 'Internal server error',
+        details: error instanceof Error ? error.message : 'Unknown error',
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }

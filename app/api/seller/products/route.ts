@@ -13,12 +13,45 @@ const createSupabaseClient = () => {
   return createClient(supabaseUrl, supabaseKey);
 };
 
+// Input validation helper
+const validateQueryParams = (searchParams: URLSearchParams) => {
+  const page = parseInt(searchParams.get('page') || '1');
+  const limit = parseInt(searchParams.get('limit') || '20');
+  const featured = searchParams.get('featured');
+
+  const errors: string[] = [];
+
+  if (page < 1) {
+    errors.push('page must be greater than 0');
+  }
+
+  if (limit < 1 || limit > 100) {
+    errors.push('limit must be between 1 and 100');
+  }
+
+  if (featured && !['true', 'false'].includes(featured)) {
+    errors.push('featured must be true or false');
+  }
+
+  return { page, limit, featured, errors };
+};
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '20');
-    const featured = searchParams.get('featured');
+    const { page, limit, featured, errors } = validateQueryParams(searchParams);
+
+    if (errors.length > 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Invalid parameters',
+          details: errors,
+          timestamp: new Date().toISOString()
+        },
+        { status: 400 }
+      );
+    }
     
     const offset = (page - 1) * limit;
 
@@ -130,7 +163,7 @@ export async function GET(request: NextRequest) {
     // Get total count for pagination
     const totalCount = testData || 0;
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       success: true,
       data: transformedProducts,
       pagination: {
@@ -140,8 +173,17 @@ export async function GET(request: NextRequest) {
         totalPages: Math.ceil(totalCount / limit),
         hasNext: page * limit < totalCount,
         hasPrev: page > 1
+      },
+      meta: {
+        timestamp: new Date().toISOString()
       }
     });
+
+    // Add security headers
+    response.headers.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=60');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+
+    return response;
 
   } catch (error) {
     console.error('Products API unexpected error:', error);

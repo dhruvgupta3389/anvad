@@ -170,7 +170,9 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// GET method to retrieve cart recommendations/suggestions
+// GET method to retrieve cart validation and recommendations
+// Note: This API is for cart validation before checkout, not for cart management
+// Cart management is done locally in the frontend using CartContext
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
