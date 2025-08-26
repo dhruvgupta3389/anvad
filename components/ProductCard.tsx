@@ -10,7 +10,6 @@ import { Product, ProductVariant } from "@/types/product";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import DiscountBadge from "./DiscountBadge";
-import ProductDebug from "./ProductDebug";
 
 interface ProductCardProps { product: Product; }
 
@@ -181,8 +180,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </Button>
           
         </div>
-
-        <ProductDebug product={product} selectedVariant={selectedVariant} />
       </CardContent>
     </Card>
   );

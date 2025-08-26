@@ -1,5 +1,6 @@
 {
   "/page": "app/page.js",
   "/api/seller/products/route": "app/api/seller/products/route.js",
-  "/api/test-variant-format/route": "app/api/test-variant-format/route.js"
+  "/api/test-variant-format/route": "app/api/test-variant-format/route.js",
+  "/api/simple-variant-test/route": "app/api/simple-variant-test/route.js"
 }
