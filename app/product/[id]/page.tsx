@@ -54,23 +54,24 @@ export default function ProductPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       if (!id) return;
-      
+
       try {
         setLoading(true);
-        const response = await fetch('/api/seller/products');
-        if (!response.ok) throw new Error('Failed to fetch products');
-        
+        const response = await fetch(`/api/seller/products/${id}`);
+
+        if (response.status === 404) {
+          setError('Product not found');
+          return;
+        }
+
+        if (!response.ok) throw new Error('Failed to fetch product');
+
         const data = await response.json();
-        if (data.success) {
-          const foundProduct = data.data.find((p: Product) => p.id === parseInt(id));
-          if (foundProduct) {
-            setProduct(foundProduct);
-            setSelectedVariant(foundProduct.variants[0] || null);
-          } else {
-            setError('Product not found');
-          }
+        if (data.success && data.data) {
+          setProduct(data.data);
+          setSelectedVariant(data.data.variants[0] || null);
         } else {
-          setError('Failed to load product');
+          setError(data.error || 'Failed to load product');
         }
       } catch (err) {
         console.error('Error fetching product:', err);
