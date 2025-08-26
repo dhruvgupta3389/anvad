@@ -6,11 +6,25 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCart } from '@/contexts/CartContext';
-import { CheckCircle, Mail, Phone, MapPin, User, Shield, X } from 'lucide-react';
+import { CheckCircle, Mail, Phone, MapPin, User, Shield, X, CreditCard } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 interface PaymentFormProps {
   cartItems: any[];
+}
+
+// Declare HeadlessCheckout interface for TypeScript
+declare global {
+  interface Window {
+    HeadlessCheckout: {
+      addToCart: (config: {
+        token: string;
+        onSuccess: (response: any) => void;
+        onError: (error: any) => void;
+        onCancel: () => void;
+      }) => void;
+    };
+  }
 }
 
 const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
@@ -28,6 +42,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
   const [loading, setLoading] = useState({
     sendingOtp: false,
     verifyingOtp: false,
+    generatingToken: false,
     placingOrder: false
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -120,6 +135,90 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
+    setLoading(prev => ({ ...prev, generatingToken: true }));
+
+    try {
+      // Prepare cart data for checkout token generation
+      const cartData = {
+        items: cartItems.map(item => ({
+          id: item.product.id.toString(),
+          name: item.product.name,
+          price: item.variant.price,
+          quantity: item.quantity,
+          variant: {
+            id: item.variant.id,
+            title: item.variant.quantity,
+            price: item.variant.price
+          }
+        })),
+        total: cartItems.reduce((sum, item) => sum + (item.variant.price * item.quantity), 0),
+        currency: 'INR'
+      };
+
+      // Generate checkout token
+      const tokenResponse = await fetch('/api/generate-token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          cart_data: cartData,
+          customer_details: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            address: formData.address
+          }
+        }),
+      });
+
+      if (!tokenResponse.ok) {
+        const errorData = await tokenResponse.json();
+        throw new Error(errorData.error || 'Failed to generate checkout token');
+      }
+
+      const { token, order_id } = await tokenResponse.json();
+
+      setLoading(prev => ({ ...prev, generatingToken: false }));
+
+      // Initialize Shiprocket checkout
+      if (typeof window !== 'undefined' && window.HeadlessCheckout) {
+        window.HeadlessCheckout.addToCart({
+          token: token,
+          onSuccess: (response: any) => {
+            console.log('Payment successful:', response);
+            setSuccess('🎉 Payment successful! Your order has been placed.');
+            clearCart();
+            
+            // Redirect to success page
+            setTimeout(() => {
+              router.push(`/order-success?order_id=${order_id}`);
+            }, 2000);
+          },
+          onError: (error: any) => {
+            console.error('Payment failed:', error);
+            setErrors(prev => ({ ...prev, submit: 'Payment failed. Please try again.' }));
+            setLoading(prev => ({ ...prev, placingOrder: false }));
+          },
+          onCancel: () => {
+            console.log('Payment cancelled by user');
+            setErrors(prev => ({ ...prev, submit: 'Payment was cancelled.' }));
+            setLoading(prev => ({ ...prev, placingOrder: false }));
+          }
+        });
+      } else {
+        // Fallback: Direct order placement (for development/testing)
+        console.warn('Shiprocket HeadlessCheckout not available, placing order directly');
+        await placeOrderDirectly(cartData, order_id);
+      }
+
+    } catch (error) {
+      console.error('Checkout error:', error);
+      setErrors(prev => ({ ...prev, submit: error instanceof Error ? error.message : 'Checkout failed. Please try again.' }));
+      setLoading(prev => ({ ...prev, generatingToken: false, placingOrder: false }));
+    }
+  };
+
+  // Fallback method for direct order placement
+  const placeOrderDirectly = async (cartData: any, orderId: string) => {
     setLoading(prev => ({ ...prev, placingOrder: true }));
 
     try {
@@ -145,6 +244,10 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
           address: formData.address,
           product_details: simplifiedCartItems,
           total_price: totalPrice,
+          payment_status: 'pending',
+          phonepe_order_id: orderId,
+          amount_paisa: totalPrice * 100,
+          cart_snapshot: simplifiedCartItems
         })
         .select('id')
         .single();
@@ -191,6 +294,22 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
 
   const totalAmount = cartItems.reduce((sum, item) => sum + (item.variant.price * item.quantity), 0);
 
+  // Load Shiprocket script
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.HeadlessCheckout) {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.shiprocket.co/headless.js';
+      script.async = true;
+      document.body.appendChild(script);
+      
+      return () => {
+        if (document.body.contains(script)) {
+          document.body.removeChild(script);
+        }
+      };
+    }
+  }, []);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white">
@@ -209,7 +328,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
               <X className="h-5 w-5" />
             </Button>
           </div>
-          <p className="text-gray-600">Complete your order securely</p>
+          <p className="text-gray-600">Complete your order securely with Shiprocket</p>
         </CardHeader>
 
         <CardContent className="space-y-6">
@@ -385,26 +504,34 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
               </div>
             </div>
 
-            {/* Place Order Button */}
+            {/* Proceed to Payment Button */}
             <Button
               type="submit"
-              disabled={!isVerified || loading.placingOrder}
+              disabled={!isVerified || loading.generatingToken || loading.placingOrder}
               className="w-full bg-[#7d3600] hover:bg-[#6d2f00] text-white py-3 text-lg font-semibold"
             >
-              {loading.placingOrder ? (
+              {loading.generatingToken ? (
                 <div className="flex items-center gap-2">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  Processing Order...
+                  Preparing Checkout...
+                </div>
+              ) : loading.placingOrder ? (
+                <div className="flex items-center gap-2">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  Processing Payment...
                 </div>
               ) : (
-                `Place Order - ₹${totalAmount}`
+                <div className="flex items-center justify-center gap-2">
+                  <CreditCard className="h-5 w-5" />
+                  Proceed to Payment - ₹{totalAmount}
+                </div>
               )}
             </Button>
 
             {/* Security Notice */}
             <div className="text-center text-sm text-gray-500 space-y-1">
               <p className="flex items-center justify-center gap-1">
-                🔒 Your information is secure and encrypted
+                🔒 Secured by Shiprocket • Your information is encrypted
               </p>
               <p>📦 Free delivery on all orders • 💯 100% authentic products</p>
             </div>

@@ -5,476 +5,288 @@ import { useParams, useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { products, getProductsByCategory } from "@/data/products";
-import { 
-  ArrowLeft, 
-  Mail, 
-  Bell, 
-  Filter, 
-  Grid3X3, 
-  List, 
-  Search,
-  Star,
-  Shield,
-  Truck,
-  Award,
-  Leaf,
-  Heart,
-  ChefHat,
-  Crown
-} from "lucide-react";
+import { Loading, ProductCardSkeleton } from "@/components/Loading";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "sonner";
+import { ArrowLeft, Filter } from "lucide-react";
+import { useSearch } from "@/contexts/SearchContext";
 
-interface CategoryConfig {
-  name: string;
+// Category mapping
+const categoryMap: { [key: string]: string } = {
+  "a2-ghee": "A2 Ghee",
+  "honey": "Honey", 
+  "oil": "Oil",
+  "spices": "Spices"
+};
+
+interface Product {
+  id: number;
+  title: string;
   description: string;
-  icon: string;
-  comingSoonDescription: string;
-  heroImage: string;
-  benefits: string[];
-  features: Array<{
-    icon: React.ReactNode;
+  image_url: string;
+  price: number;
+  sku: string;
+  rating: number;
+  reviews_count: number;
+  is_featured: boolean;
+  in_stock: boolean;
+  variants: Array<{
+    id: string;
     title: string;
-    description: string;
+    price: number;
+    original_price: number;
+    sku: string;
+    in_stock: boolean;
+    stock_quantity: number;
   }>;
 }
 
-const categoryConfigs: Record<string, CategoryConfig> = {
-  "all-products": {
-    name: "All Products",
-    description: "Discover our complete collection of premium A2 ghee and natural products crafted with traditional methods and modern quality standards",
-    icon: "🛍️",
-    comingSoonDescription: "",
-    heroImage: "https://images.unsplash.com/photo-1556909114-4f29305fb654?w=1200&h=400&fit=crop&crop=center",
-    benefits: ["100% Natural", "Premium Quality", "Traditional Methods", "Lab Tested"],
-    features: [
-      {
-        icon: <Leaf className="h-6 w-6" />,
-        title: "100% Natural",
-        description: "Pure ingredients without harmful additives"
-      },
-      {
-        icon: <Award className="h-6 w-6" />,
-        title: "Premium Quality",
-        description: "Highest quality standards maintained"
-      },
-      {
-        icon: <Heart className="h-6 w-6" />,
-        title: "Health Focused",
-        description: "Rich in nutrients for healthy lifestyle"
-      }
-    ]
-  },
-  "a2-ghee": {
-    name: "A2 Ghee Collection",
-    description: "Pure A2 ghee made from the finest quality milk of grass-fed cows using traditional bilona method. Experience the authentic taste and unmatched nutritional benefits.",
-    icon: "🧈",
-    comingSoonDescription: "",
-    heroImage: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=1200&h=400&fit=crop&crop=center",
-    benefits: ["A2 Beta-Casein", "Bilona Method", "Grass-Fed Cows", "Chemical Free"],
-    features: [
-      {
-        icon: <Crown className="h-6 w-6" />,
-        title: "Pure A2 Milk",
-        description: "From indigenous cows producing A2 beta-casein protein"
-      },
-      {
-        icon: <ChefHat className="h-6 w-6" />,
-        title: "Traditional Bilona",
-        description: "Prepared using age-old bilona method"
-      },
-      {
-        icon: <Star className="h-6 w-6" />,
-        title: "Premium Quality",
-        description: "Rich in vitamins and healthy fats"
-      }
-    ]
-  },
-  "honey": {
-    name: "Premium Honey Collection",
-    description: "Raw, unprocessed honey sourced directly from trusted beekeepers. Pure wildflower honey with natural enzymes and antioxidants.",
-    icon: "🍯",
-    comingSoonDescription: "Get ready for our premium collection of pure, raw honey sourced directly from trusted beekeepers. Experience the natural sweetness and health benefits of our carefully curated honey varieties.",
-    heroImage: "https://images.unsplash.com/photo-1587049016823-c80767480df6?w=1200&h=400&fit=crop&crop=center",
-    benefits: ["Raw & Unprocessed", "Wildflower Source", "Natural Enzymes", "Antioxidant Rich"],
-    features: [
-      {
-        icon: <Leaf className="h-6 w-6" />,
-        title: "Raw & Unprocessed",
-        description: "Pure honey collected directly from beehives"
-      },
-      {
-        icon: <Star className="h-6 w-6" />,
-        title: "Wildflower Source",
-        description: "Rich, complex flavors from wildflower meadows"
-      },
-      {
-        icon: <Heart className="h-6 w-6" />,
-        title: "Health Benefits",
-        description: "Natural antioxidants and immune support"
-      }
-    ]
-  },
-  "oil": {
-    name: "Premium Oil Collection",
-    description: "Cold-pressed, organic oils extracted using traditional methods to preserve maximum nutrients and authentic flavors.",
-    icon: "🛢️",
-    comingSoonDescription: "Discover our upcoming collection of cold-pressed, organic oils including coconut oil, mustard oil, and other traditional cooking oils. Pure, natural, and packed with nutrients for healthy cooking.",
-    heroImage: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=1200&h=400&fit=crop&crop=center",
-    benefits: ["Cold Pressed", "100% Pure", "No Additives", "High Smoke Point"],
-    features: [
-      {
-        icon: <Leaf className="h-6 w-6" />,
-        title: "Cold Pressed",
-        description: "Traditional extraction retains nutrients"
-      },
-      {
-        icon: <Shield className="h-6 w-6" />,
-        title: "Pure & Organic",
-        description: "No chemicals or preservatives added"
-      },
-      {
-        icon: <ChefHat className="h-6 w-6" />,
-        title: "Cooking Excellence",
-        description: "Perfect for healthy cooking with authentic flavors"
-      }
-    ]
-  },
-  "spices": {
-    name: "Authentic Spice Collection",
-    description: "Handpicked spices with intense aroma and authentic traditional flavors. Freshly ground from whole spices to preserve maximum potency.",
-    icon: "🌶️",
-    comingSoonDescription: "Explore our forthcoming range of authentic, aromatic spices sourced from the finest farms. From turmeric to cardamom, experience the true flavors of traditional Indian spices in their purest form.",
-    heroImage: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1200&h=400&fit=crop&crop=center",
-    benefits: ["Authentic Flavor", "Fresh Ground", "Farm Direct", "Traditional Quality"],
-    features: [
-      {
-        icon: <Star className="h-6 w-6" />,
-        title: "Authentic Flavor",
-        description: "Handpicked spices with intense aroma"
-      },
-      {
-        icon: <Leaf className="h-6 w-6" />,
-        title: "Fresh Ground",
-        description: "Freshly ground to preserve maximum potency"
-      },
-      {
-        icon: <Award className="h-6 w-6" />,
-        title: "Traditional Quality",
-        description: "Sourced using traditional cultivation methods"
-      }
-    ]
-  }
-};
+interface Collection {
+  id: number;
+  title: string;
+  description: string;
+  slug: string;
+}
 
-export default function ProductPage() {
+export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
-  const category = params.category as string;
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [emailNotification, setEmailNotification] = useState('');
+  const { searchQuery } = useSearch();
+  const category = params?.category as string;
 
+  const [products, setProducts] = useState<Product[]>([]);
+  const [collections, setCollections] = useState<Collection[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState<string>("featured");
+
+  // Fetch collections and products
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [category]);
-
-  const categoryConfig = categoryConfigs[category || "all-products"];
-  
-  const categoryProducts = useMemo(() => {
-    if (!category || category === "all-products") {
-      return products.filter(product => 
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    const categoryMap: Record<string, string> = {
-      "a2-ghee": "A2 Ghee",
-      "honey": "Honey",
-      "oil": "Oil", 
-      "spices": "Spices"
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch collections to get the collection ID
+        const collectionsResponse = await fetch('/api/seller/collections');
+        if (!collectionsResponse.ok) throw new Error('Failed to fetch collections');
+        
+        const collectionsData = await collectionsResponse.json();
+        if (!collectionsData.success) throw new Error('Failed to load collections');
+        
+        setCollections(collectionsData.data);
+        
+        // Find the collection that matches the category
+        const collection = collectionsData.data.find((c: Collection) => c.slug === category);
+        
+        if (collection) {
+          // Fetch products for this collection
+          const productsResponse = await fetch(`/api/seller/products/by-collection?collection_id=${collection.id}`);
+          if (!productsResponse.ok) throw new Error('Failed to fetch products');
+          
+          const productsData = await productsResponse.json();
+          if (productsData.success) {
+            setProducts(productsData.data);
+          } else {
+            throw new Error('Failed to load products');
+          }
+        } else {
+          setError('Category not found');
+        }
+        
+      } catch (err) {
+        console.error('Error fetching category data:', err);
+        setError('Failed to load category products');
+      } finally {
+        setLoading(false);
+      }
     };
 
-    const categoryName = categoryMap[category];
-    const categoryProductsList = categoryName ? getProductsByCategory(categoryName) : [];
-    return categoryProductsList.filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }, [category, searchTerm]);
+    fetchData();
+  }, [category]);
 
-  const groupedProducts = useMemo(() => {
-    if (category !== "all-products") return null;
-
-    const groups: Record<string, typeof products> = {};
-    categoryProducts.forEach(product => {
-      if (!groups[product.category]) {
-        groups[product.category] = [];
-      }
-      groups[product.category].push(product);
-    });
-    return groups;
-  }, [category, categoryProducts]);
-
-  const hasProducts = categoryProducts.length > 0;
-
-  const handleNotifyMe = () => {
-    if (emailNotification) {
-      toast("🔔 Thank you!", {
-        description: `We'll notify you when ${categoryConfig.name} products are available!`,
-        duration: 3000,
-      });
-      setEmailNotification('');
+  // Filter products based on search query
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return products;
     }
-  };
 
-  if (!categoryConfig) {
-    router.push("/products/all-products");
-    return null;
+    return products.filter(product =>
+      product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [products, searchQuery]);
+
+  // Sort products
+  const sortedProducts = useMemo(() => {
+    const productsToSort = [...filteredProducts];
+    
+    switch (sortBy) {
+      case "price-low":
+        return productsToSort.sort((a, b) => a.price - b.price);
+      case "price-high":
+        return productsToSort.sort((a, b) => b.price - a.price);
+      case "rating":
+        return productsToSort.sort((a, b) => b.rating - a.rating);
+      case "newest":
+        return productsToSort.sort((a, b) => b.id - a.id);
+      case "featured":
+      default:
+        return productsToSort.sort((a, b) => {
+          if (a.is_featured && !b.is_featured) return -1;
+          if (!a.is_featured && b.is_featured) return 1;
+          return b.rating - a.rating;
+        });
+    }
+  }, [filteredProducts, sortBy]);
+
+  // Convert API product format to component format
+  const convertProduct = (product: Product) => ({
+    id: product.id,
+    name: product.title,
+    description: product.description,
+    basePrice: product.price,
+    image: product.image_url,
+    category: categoryMap[category] || category,
+    rating: product.rating,
+    reviews: product.reviews_count,
+    highlight: product.is_featured,
+    variants: product.variants.map(variant => ({
+      id: variant.sku,
+      quantity: variant.title,
+      price: variant.price,
+      originalPrice: variant.original_price,
+      inStock: variant.in_stock
+    }))
+  });
+
+  const categoryName = categoryMap[category] || category;
+  const currentCollection = collections.find(c => c.slug === category);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#F9F1E6]">
+        <Header hasAnnouncementBar={false} />
+        <main className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {Array.from({length: 8}).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#F9F1E6]">
+        <Header hasAnnouncementBar={false} />
+        <main className="max-w-7xl mx-auto px-4 py-16">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-red-600 mb-4">Category Not Found</h1>
+            <p className="text-gray-600 mb-8">{error}</p>
+            <Button
+              onClick={() => router.push('/')}
+              className="bg-[#5D4733] hover:bg-[#7A3E2F] text-white px-6 py-2 rounded-full"
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Go Back Home
+            </Button>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F9F1E6] via-white to-[#F9F1E6]">
-      <Header />
+    <div className="min-h-screen bg-[#F9F1E6]">
+      <Header hasAnnouncementBar={false} />
       
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {/* Breadcrumb & Navigation */}
-        <div className="flex items-center justify-between mb-8">
+        {/* Header Section */}
+        <div className="mb-8">
           <Button
             variant="ghost"
-            onClick={() => router.push('/')}
-            className="text-[#7d3600] hover:bg-[#7d3600]/10 hover:scale-105 transition-all duration-300"
+            onClick={() => router.back()}
+            className="text-[#5D4733] hover:bg-[#5D4733]/10 mb-4"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Home
+            Back
           </Button>
-          
-          {hasProducts && (
-            <div className="flex items-center gap-2">
-              <Button
-                variant={viewMode === 'grid' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setViewMode('grid')}
-                className="bg-[#7d3600] hover:bg-[#b84d00]"
-              >
-                <Grid3X3 className="h-4 w-4" />
-              </Button>
-              <Button
-                variant={viewMode === 'list' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setViewMode('list')}
-                className="bg-[#7d3600] hover:bg-[#b84d00]"
-              >
-                <List className="h-4 w-4" />
-              </Button>
+
+          <div className="text-center mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#5D4733] mb-2">
+              {currentCollection?.title || categoryName}
+            </h1>
+            <p className="text-gray-600 text-lg">
+              {currentCollection?.description || `Explore our premium ${categoryName.toLowerCase()} collection`}
+            </p>
+          </div>
+
+          {/* Search Results Info */}
+          {searchQuery && (
+            <div className="mb-6">
+              <p className="text-gray-600">
+                {filteredProducts.length} products found for "{searchQuery}" in {categoryName}
+              </p>
             </div>
           )}
-        </div>
 
-        {/* Hero Section */}
-        <div className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl">
-          <div className="relative h-64 md:h-80">
-            <img
-              src={categoryConfig.heroImage}
-              alt={categoryConfig.name}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#7d3600]/80 via-[#7d3600]/60 to-transparent"></div>
+          {/* Sort and Filter */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+            <div className="flex items-center gap-2">
+              <Filter className="h-4 w-4 text-gray-500" />
+              <span className="text-gray-600">
+                Showing {sortedProducts.length} products
+              </span>
+            </div>
             
-            <div className="absolute inset-0 flex items-center">
-              <div className="max-w-2xl mx-auto px-8 text-center text-white">
-                <div className="text-6xl mb-4 animate-bounce">
-                  {categoryConfig.icon}
-                </div>
-                <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-                  {categoryConfig.name}
-                </h1>
-                <p className="text-lg md:text-xl mb-6 text-white/90 leading-relaxed">
-                  {categoryConfig.description}
-                </p>
-                
-                {/* Benefits Pills */}
-                <div className="flex flex-wrap justify-center gap-2 mb-6">
-                  {categoryConfig.benefits.map((benefit, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="bg-white/20 text-white border-white/30 hover:bg-white/30 transition-all duration-300"
-                    >
-                      {benefit}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+            <div className="flex items-center gap-2">
+              <label htmlFor="sort" className="text-sm text-gray-600">Sort by:</label>
+              <select
+                id="sort"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-[#5D4733]"
+              >
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Customer Rating</option>
+                <option value="newest">Newest First</option>
+              </select>
             </div>
           </div>
         </div>
 
-        {/* Search Bar (only if has products) */}
-        {hasProducts && (
-          <div className="mb-8">
-            <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 rounded-full border-2 focus:border-[#7d3600] transition-all duration-300"
-              />
-            </div>
+        {/* Products Grid */}
+        {sortedProducts.length === 0 ? (
+          <div className="text-center py-16">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              No products found
+            </h2>
+            <p className="text-gray-600 mb-8">
+              {searchQuery 
+                ? `No products match "${searchQuery}" in this category.`
+                : `No products available in ${categoryName} category.`
+              }
+            </p>
+            <Button
+              onClick={() => router.push('/')}
+              className="bg-[#5D4733] hover:bg-[#7A3E2F] text-white px-6 py-2 rounded-full"
+            >
+              Browse All Products
+            </Button>
           </div>
-        )}
-
-        {hasProducts ? (
-          <>
-            {/* Products Grid */}
-            {category === "all-products" && groupedProducts ? (
-              <div className="space-y-16">
-                {Object.entries(groupedProducts).map(([categoryName, categoryProductsList]) => (
-                  <div key={categoryName} className="animate-fade-in">
-                    <div className="text-center mb-8">
-                      <h2 className="text-2xl md:text-3xl font-bold text-[#7d3600] mb-2">
-                        {categoryName}
-                      </h2>
-                      <div className="w-16 h-0.5 bg-gradient-to-r from-[#7d3600] to-[#b84d00] mx-auto rounded-full"></div>
-                    </div>
-                    <div className={`grid ${
-                      viewMode === 'grid' 
-                        ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6' 
-                        : 'grid-cols-1 gap-4'
-                    }`}>
-                      {categoryProductsList.map((product) => (
-                        <div key={product.id} className="animate-fade-in hover:scale-105 transition-transform duration-300">
-                          <ProductCard product={product} />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className={`grid ${
-                viewMode === 'grid' 
-                  ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6' 
-                  : 'grid-cols-1 gap-4'
-              }`}>
-                {categoryProducts.map((product) => (
-                  <div key={product.id} className="animate-fade-in hover:scale-105 transition-transform duration-300">
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Features Section */}
-            <div className="mt-20 bg-gradient-to-r from-[#7d3600]/5 via-white to-[#b84d00]/5 rounded-3xl p-8 md:p-12 shadow-xl">
-              <h2 className="text-3xl font-bold text-[#7d3600] mb-8 text-center">
-                Why Choose Our {categoryConfig.name}?
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {categoryConfig.features.map((feature, index) => (
-                  <div key={index} className="text-center group hover:scale-105 transition-all duration-300">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#7d3600] to-[#b84d00] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                      <span className="text-white text-2xl">
-                        {feature.icon}
-                      </span>
-                    </div>
-                    <h3 className="font-bold text-[#7d3600] mb-3 text-lg">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { icon: <Shield className="h-8 w-8" />, title: "Quality Assured", desc: "Lab tested purity" },
-                { icon: <Truck className="h-8 w-8" />, title: "Fast Delivery", desc: "Free shipping above ₹500" },
-                { icon: <Star className="h-8 w-8" />, title: "5 Star Rated", desc: "1000+ happy customers" },
-                { icon: <Award className="h-8 w-8" />, title: "Premium Brand", desc: "Trusted since 2020" }
-              ].map((item, index) => (
-                <div key={index} className="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <div className="text-[#7d3600] mb-3 flex justify-center">
-                    {item.icon}
-                  </div>
-                  <h4 className="font-semibold text-[#7d3600] mb-1">{item.title}</h4>
-                  <p className="text-xs text-gray-600">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </>
         ) : (
-          <>
-            {/* Coming Soon Section */}
-            <div className="text-center py-16">
-              <div className="inline-block bg-gradient-to-r from-[#b84d00] to-[#7d3600] text-white px-8 py-3 rounded-full font-bold mb-8 shadow-lg">
-                Coming Soon
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {sortedProducts.map((product) => (
+              <div key={product.id} className="animate-fade-in">
+                <ProductCard product={convertProduct(product)} />
               </div>
-              
-              <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                {categoryConfig.comingSoonDescription}
-              </p>
-
-              {/* Notification Signup */}
-              <Card className="max-w-lg mx-auto mb-16 shadow-xl border-2 border-[#7d3600]/10">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6 justify-center">
-                    <Bell className="h-6 w-6 text-[#7d3600]" />
-                    <h3 className="font-bold text-[#7d3600] text-xl">Get Notified First</h3>
-                  </div>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    Be the first to know when our {categoryConfig.name.toLowerCase()} products are available! Get exclusive early access and special launch offers.
-                  </p>
-                  <div className="flex gap-3">
-                    <Input 
-                      type="email"
-                      placeholder="Enter your email address"
-                      value={emailNotification}
-                      onChange={(e) => setEmailNotification(e.target.value)}
-                      className="flex-1 border-2 focus:border-[#7d3600]"
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          handleNotifyMe();
-                        }
-                      }}
-                    />
-                    <Button 
-                      className="bg-gradient-to-r from-[#7d3600] to-[#b84d00] hover:from-[#b84d00] hover:to-[#7d3600] px-6"
-                      onClick={handleNotifyMe}
-                    >
-                      <Mail className="h-4 w-4 mr-2" />
-                      Notify Me
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Expected Features */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                {categoryConfig.features.map((feature, index) => (
-                  <div key={index} className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#7d3600] to-[#b84d00] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      <span className="text-white text-xl">
-                        {feature.icon}
-                      </span>
-                    </div>
-                    <h3 className="font-bold text-[#7d3600] mb-3 text-lg">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </>
+            ))}
+          </div>
         )}
       </main>
 

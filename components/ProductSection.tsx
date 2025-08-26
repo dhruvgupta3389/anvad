@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import ProductCard from "./ProductCard";
-import { Product } from "@/data/products";
+import { Product } from "@/types/product";
 
 interface ProductSectionProps {
   products: Product[];

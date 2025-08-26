@@ -5,7 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import { Product, ProductVariant } from '@/data/products';
+import { Product, ProductVariant } from '@/types/product';
 
 export interface CartItem {
   product: Product;

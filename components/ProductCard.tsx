@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Heart, Star, ShoppingCart, Plus, Minus } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Product, ProductVariant } from "@/data/products";
+import { Product, ProductVariant } from "@/types/product";
 import { useCart } from "@/contexts/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import DiscountBadge from "./DiscountBadge";
