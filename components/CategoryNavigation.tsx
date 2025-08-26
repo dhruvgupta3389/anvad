@@ -21,23 +21,23 @@ const categories: CategoryItem[] = [
   },
   {
     name: "Honey",
-    image: "https://images.pexels.com/photos/9105966/pexels-photo-9105966.jpeg?w=300&h=200&fit=crop&crop=center",
+    image: "https://images.pexels.com/photos/33162/honey-spoon-organic-sweet.jpg?w=300&h=200&fit=crop&crop=center",
     category: "Honey",
-    hasProducts: false,
+    hasProducts: true,
     route: "/products/honey"
   },
   {
     name: "Oil",
-    image: "https://images.pexels.com/photos/315420/pexels-photo-315420.jpeg?w=300&h=200&fit=crop&crop=center",
+    image: "https://images.pexels.com/photos/1322343/pexels-photo-1322343.jpeg?w=300&h=200&fit=crop&crop=center",
     category: "Oil",
-    hasProducts: false,
+    hasProducts: true,
     route: "/products/oil"
   },
   {
     name: "Spices",
-    image: "https://images.pexels.com/photos/315420/pexels-photo-315420.jpeg?w=300&h=200&fit=crop&crop=center",
+    image: "https://images.pexels.com/photos/1340116/pexels-photo-1340116.jpeg?w=300&h=200&fit=crop&crop=center",
     category: "Spices",
-    hasProducts: false,
+    hasProducts: true,
     route: "/products/spices"
   }
 ];
@@ -77,7 +77,7 @@ const CategoryNavigation = () => {
                     className="w-full h-32 md:h-40 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   {!category.hasProducts && (
-                    <div className="absolute top-2 right-2 bg-[#b84d00] text-[#7d3600] text-xs font-bold px-2 py-1 rounded-full">
+                    <div className="absolute top-2 right-2 bg-[#b84d00] text-white text-xs font-bold px-2 py-1 rounded-full">
                       Soon
                     </div>
                   )}
