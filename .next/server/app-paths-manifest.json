@@ -1,6 +1,3 @@
 {
-  "/page": "app/page.js",
-  "/api/setup-sample-data/route": "app/api/setup-sample-data/route.js",
-  "/api/seller/products/route": "app/api/seller/products/route.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/page": "app/page.js"
 }
