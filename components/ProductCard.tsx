@@ -24,6 +24,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant>(product.variants[0]);
   const [quantity, setQuantity] = useState(1);
 
+  // Debug logging
+  if (process.env.NODE_ENV === 'development') {
+    console.log('ProductCard - Product:', product.name);
+    console.log('ProductCard - Variants:', product.variants);
+    console.log('ProductCard - Selected variant:', selectedVariant);
+    console.log('ProductCard - Selected variant inStock:', selectedVariant?.inStock);
+  }
+
   const discountPercentage = Math.round(
     ((selectedVariant.originalPrice - selectedVariant.price) / selectedVariant.originalPrice) * 100
   );
