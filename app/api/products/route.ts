@@ -1,44 +1,69 @@
 import { NextResponse } from 'next/server';
-import { products } from '@/data/products';
+import { supabase } from '@/lib/supabaseClient';
 
 export async function GET() {
   try {
-    // Transform our product data to match the requested API structure
+    // Fetch products from Supabase
+    const { data: products, error } = await supabase
+      .from('products')
+      .select(`
+        *,
+        variants:product_variants(*)
+      `);
+
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch products from database' },
+        { status: 500 }
+      );
+    }
+
+    if (!products || products.length === 0) {
+      return NextResponse.json({
+        data: {
+          total: 0,
+          products: []
+        }
+      });
+    }
+
+    // Transform Supabase data to match the requested API structure
     const transformedProducts = products.map(product => {
       // Generate handle from product name (lowercase, replace spaces with hyphens)
-      const handle = product.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-      
+      const handle = (product.name || product.title || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
       // Transform variants to match the requested structure
-      const transformedVariants = product.variants.map(variant => ({
-        id: parseInt(variant.id.replace(/[^0-9]/g, '') || '0', 10),
-        title: variant.quantity,
-        price: variant.price.toFixed(2),
-        sku: `${handle.toUpperCase()}-${variant.quantity.toUpperCase()}`,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        taxable: true,
-        grams: 0, // Not available in our data
+      const transformedVariants = (product.variants || []).map((variant: any) => ({
+        id: variant.id || Math.floor(Math.random() * 1000000),
+        title: variant.quantity || variant.title || '',
+        price: (variant.price || 0).toFixed(2),
+        sku: variant.sku || `${handle.toUpperCase()}-${(variant.quantity || '').toUpperCase()}`,
+        created_at: variant.created_at || new Date().toISOString(),
+        updated_at: variant.updated_at || new Date().toISOString(),
+        taxable: variant.taxable !== undefined ? variant.taxable : true,
+        grams: variant.grams || 0,
         image: {
-          src: product.image
+          src: variant.image || product.image || ''
         },
-        weight: 0, // Not available in our data
-        weight_unit: "kg"
+        weight: variant.weight || 0,
+        weight_unit: variant.weight_unit || "kg"
       }));
 
       return {
         id: product.id,
-        title: product.name,
-        body_html: `<p>${product.description}</p>`,
-        vendor: "", // Not available in our data
-        product_type: product.category,
-        created_at: new Date().toISOString(),
+        title: product.name || product.title || '',
+        body_html: product.description ? `<p>${product.description}</p>` : '',
+        vendor: product.vendor || '',
+        product_type: product.category || product.product_type || '',
+        created_at: product.created_at || new Date().toISOString(),
         handle: handle,
-        updated_at: new Date().toISOString(),
-        tags: "", // Not available in our data
-        status: "active",
+        updated_at: product.updated_at || new Date().toISOString(),
+        tags: product.tags || '',
+        status: product.status || 'active',
         variants: transformedVariants,
         image: {
-          src: product.image
+          src: product.image || ''
         }
       };
     });
