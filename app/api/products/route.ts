@@ -31,36 +31,36 @@ export async function GET() {
     // Transform Supabase data to match the requested API structure
     const transformedProducts = products.map(product => {
       // Generate handle from product name (lowercase, replace spaces with hyphens)
-      const handle = (product.name || product.title || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const handle = (product.name || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
       // Transform variants to match the requested structure
       const transformedVariants = (product.variants || []).map((variant: any) => ({
-        id: variant.id || Math.floor(Math.random() * 1000000),
-        title: variant.quantity || variant.title || '',
+        id: variant.id,
+        title: variant.quantity || '',
         price: (variant.price || 0).toFixed(2),
         sku: variant.sku || `${handle.toUpperCase()}-${(variant.quantity || '').toUpperCase()}`,
         created_at: variant.created_at || new Date().toISOString(),
         updated_at: variant.updated_at || new Date().toISOString(),
-        taxable: variant.taxable !== undefined ? variant.taxable : true,
-        grams: variant.grams || 0,
+        taxable: true,
+        grams: 0,
         image: {
-          src: variant.image || product.image || ''
+          src: product.image || ''
         },
-        weight: variant.weight || 0,
-        weight_unit: variant.weight_unit || "kg"
+        weight: 0,
+        weight_unit: "kg"
       }));
 
       return {
         id: product.id,
-        title: product.name || product.title || '',
+        title: product.name || '',
         body_html: product.description ? `<p>${product.description}</p>` : '',
-        vendor: product.vendor || '',
-        product_type: product.category || product.product_type || '',
+        vendor: '',
+        product_type: product.category || '',
         created_at: product.created_at || new Date().toISOString(),
         handle: handle,
         updated_at: product.updated_at || new Date().toISOString(),
-        tags: product.tags || '',
-        status: product.status || 'active',
+        tags: '',
+        status: product.in_stock ? 'active' : 'inactive',
         variants: transformedVariants,
         image: {
           src: product.image || ''
