@@ -3,12 +3,12 @@ import { supabase } from '@/lib/supabaseClient';
 
 export async function GET() {
   try {
-    // Fetch products from Supabase
+    // Fetch products from Supabase with their variants
     const { data: products, error } = await supabase
       .from('products')
       .select(`
         *,
-        variants:product_variants(*)
+        variants(*)
       `);
 
     if (error) {
