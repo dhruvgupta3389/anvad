@@ -109,6 +109,18 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Test database connection
+    try {
+      const { data, error } = await supabase.from('orders').select('id').limit(1);
+      if (error) {
+        console.error('Database connection test failed:', error);
+        throw new Error('Database connection failed');
+      }
+    } catch (error) {
+      console.error('Connection test error:', error);
+      throw new Error('Database connection failed');
+    }
+    
     const newErrors: typeof errors = {};
     
     if (!formData.name.trim()) newErrors.name = 'Name is required';
@@ -135,6 +147,27 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
 
       const totalPrice = simplifiedCartItems.reduce((sum, item) => sum + item.total_price, 0);
 
+      // Create a complete cart snapshot
+      const cartSnapshot = cartItems.map((item) => ({
+        product: {
+          id: item.product.id,
+          name: item.product.name,
+          description: item.product.description,
+          category: item.product.category,
+          images: item.product.images,
+          price: item.product.price,
+          // Include any other product fields that exist
+        },
+        variant: {
+          id: item.variant.id,
+          quantity: item.variant.quantity,
+          price: item.variant.price,
+          // Include any other variant fields that exist
+        },
+        quantity: item.quantity,
+        total_price: item.variant.price * item.quantity,
+      }));
+
       // Save order to database
       const { data: orderData, error: orderError } = await supabase
         .from('orders')
@@ -145,12 +178,15 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ cartItems }) => {
           address: formData.address,
           product_details: simplifiedCartItems,
           total_price: totalPrice,
+          amount_paisa: Math.round(totalPrice * 100), // Convert rupees to paisa
+          cart_snapshot: cartSnapshot, // Add the complete cart snapshot
         })
         .select('id')
         .single();
 
       if (orderError) {
-        throw new Error('Failed to save order');
+        console.error('Order insertion error:', orderError);
+        throw new Error(`Failed to save order: ${orderError.message}`);
       }
 
       // Send order confirmation email
