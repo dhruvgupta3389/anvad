@@ -35,7 +35,7 @@ export async function GET() {
 
       // Transform variants to match the requested structure
       const transformedVariants = (product.variants || []).map((variant: any) => ({
-        id: variant.id,
+        id: Number(variant.id),
         title: variant.quantity || '',
         price: (variant.price || 0).toFixed(2),
         sku: variant.sku || `${handle.toUpperCase()}-${(variant.quantity || '').toUpperCase()}`,
